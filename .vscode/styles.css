@@ -1,0 +1,76 @@
+/* إعدادات عامة لجسم الصفحة */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* تنسيق قسم رأس الموقع */
+.header-image {
+    width: 100%; /* يجعل الصورة تمتد لعرض الصفحة بالكامل */
+    max-width: 90%; /* يجعل الصورة لا تتجاوز 90% من عرض الشاشة */
+    height: auto; /* يحافظ على نسبة الطول إلى العرض */
+    border: 5px solid #4CAF50; /* إضافة إطار بسمك 5 بكسل بلون أخضر */
+    border-radius: 15px; /* زوايا مستديرة للإطار */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* تأثير ظل للإطار */
+    transition: transform 0.3s; /* تأثير انتقال عند التمرير */
+    margin: 20px auto; /* مساحة حول الصورة وتوسيطها */
+    display: block; /* يجعل الصورة كعنصر بلوك لتوسيع العرض */
+}
+
+/* تأثير عند تمرير الفأرة فوق الصورة */
+.header-image:hover {
+    transform: scale(1.05); /* تكبير الصورة قليلاً عند التمرير */
+}
+
+/* تنسيق مستطيل الأزرار */
+.button-container {
+    display: flex; /* يجعل الأزرار تظهر بجانب بعضها */
+    justify-content: center; /* توسيط الأزرار في المستطيل */
+    align-items: center; /* توسيط العناصر عمودياً */
+    margin: 20px; /* مساحة حول المستطيل */
+    padding: 15px; /* مساحة داخل المستطيل */
+    background-color: #4CAF50; /* لون خلفية المستطيل */
+    border-radius: 15px; /* زوايا مستديرة للمستطيل */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تأثير ظل للمستطيل */
+}
+
+/* تنسيق الأزرار */
+.button {
+    background-color: #ffffff; /* لون خلفية الزر */
+    color: #4CAF50; /* لون النص داخل الزر */
+    text-decoration: none; /* إزالة التسطير */
+    border: none; /* إزالة الحدود الافتراضية للزر */
+    border-radius: 8px; /* زوايا مستديرة للزر */
+    padding: 15px 20px; /* مساحة داخل الزر */
+    margin: 0 5px; /* مساحة بين الأزرار */
+    font-weight: bold; /* جعل النص سميك */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير انتقال لون الخلفية وحركة الزر */
+}
+
+/* تنسيق فاصل الأزرار */
+.separator {
+    color: #ffffff; /* لون الفاصل */
+    margin: 0 10px; /* مساحة حول الفاصل */
+    font-weight: bold; /* جعل الفاصل سميك */
+}
+
+/* تأثير عند تمرير الفأرة فوق الزر */
+.button:hover {
+    background-color: #4CAF50; /* تغيير لون الخلفية عند التمرير */
+    color: white; /* تغيير لون النص عند التمرير */
+    transform: scale(1.05); /* تكبير الزر قليلاً عند التمرير */
+}
+
+/* تحسين عرض المستطيل على شاشات الهواتف */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: row; /* التأكد من أن الأزرار في نفس الصف */
+        align-items: center; /* توسيط الأزرار */
+    }
+
+    .button {
+        width: auto; /* جعل عرض الزر تلقائي */
+        margin: 0 5px; /* مساحة بين الأزرار */
+    }
+}
