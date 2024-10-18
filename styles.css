@@ -74,3 +74,42 @@ body {
         margin: 0 5px; /* مساحة بين الأزرار */
     }
 }
+
+.laws-section {
+    background-color: #4CAF50; /* لون القسم باللون الأخضر */
+    color: white; /* لون النص */
+    margin: 20px auto; /* تباعد من الأعلى والأسفل */
+    padding: 20px; /* تباعد داخلي */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تأثير ظل */
+    max-width: 600px; /* الحد الأقصى لعرض القسم */
+}
+
+.law-title {
+    cursor: pointer; /* تغيير شكل المؤشر عند المرور بالماوس */
+    transition: color 0.3s; /* تأثير تغيير اللون */
+}
+
+.law-title:hover {
+    color: #ffeb3b; /* تغيير اللون عند المرور بالماوس */
+}
+
+.law-content {
+    display: none; /* إخفاء المحتوى بشكل افتراضي */
+    margin-top: 10px; /* تباعد علوي */
+    animation: fadeIn 0.5s; /* تأثير الظهور */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* بداية الشفافية */
+    }
+    to {
+        opacity: 1; /* نهاية الشفافية */
+    }
+}
+
+.law-content.show {
+    display: block; /* عرض المحتوى */
+    animation: fadeIn 0.5s; /* تطبيق تأثير الظهور */
+}
