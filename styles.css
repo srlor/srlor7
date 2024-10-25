@@ -1,115 +1,167 @@
 /* إعدادات عامة لجسم الصفحة */
 body {
     font-family: Arial, sans-serif;
+    background-color: #eaeaea;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 /* تنسيق قسم رأس الموقع */
 .header-image {
-    width: 100%; /* يجعل الصورة تمتد لعرض الصفحة بالكامل */
-    max-width: 90%; /* يجعل الصورة لا تتجاوز 90% من عرض الشاشة */
-    height: auto; /* يحافظ على نسبة الطول إلى العرض */
-    border: 5px solid #4CAF50; /* إضافة إطار بسمك 5 بكسل بلون أخضر */
-    border-radius: 15px; /* زوايا مستديرة للإطار */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* تأثير ظل للإطار */
-    transition: transform 0.3s; /* تأثير انتقال عند التمرير */
-    margin: 20px auto; /* مساحة حول الصورة وتوسيطها */
-    display: block; /* يجعل الصورة كعنصر بلوك لتوسيع العرض */
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    border: 5px solid #4CAF50;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    margin: 20px auto;
+    display: block;
 }
 
 /* تأثير عند تمرير الفأرة فوق الصورة */
 .header-image:hover {
-    transform: scale(1.05); /* تكبير الصورة قليلاً عند التمرير */
+    transform: scale(1.05);
 }
 
 /* تنسيق مستطيل الأزرار */
 .button-container {
-    display: flex; /* يجعل الأزرار تظهر بجانب بعضها */
-    justify-content: center; /* توسيط الأزرار في المستطيل */
-    align-items: center; /* توسيط العناصر عمودياً */
-    margin: 20px; /* مساحة حول المستطيل */
-    padding: 15px; /* مساحة داخل المستطيل */
-    background-color: #4CAF50; /* لون خلفية المستطيل */
-    border-radius: 15px; /* زوايا مستديرة للمستطيل */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تأثير ظل للمستطيل */
+    display: flex;
+    flex-wrap: wrap; /* يسمح بانتقال الأزرار لسطر جديد على الشاشات الصغيرة */
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 15px;
+    background-color: #4CAF50;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* تنسيق الأزرار */
 .button {
-    background-color: #ffffff; /* لون خلفية الزر */
-    color: #4CAF50; /* لون النص داخل الزر */
-    text-decoration: none; /* إزالة التسطير */
-    border: none; /* إزالة الحدود الافتراضية للزر */
-    border-radius: 8px; /* زوايا مستديرة للزر */
-    padding: 15px 20px; /* مساحة داخل الزر */
-    margin: 0 5px; /* مساحة بين الأزرار */
-    font-weight: bold; /* جعل النص سميك */
-    transition: background-color 0.3s, transform 0.3s; /* تأثير انتقال لون الخلفية وحركة الزر */
-}
-
-/* تنسيق فاصل الأزرار */
-.separator {
-    color: #ffffff; /* لون الفاصل */
-    margin: 0 10px; /* مساحة حول الفاصل */
-    font-weight: bold; /* جعل الفاصل سميك */
+    background-color: #ffffff;
+    color: #4CAF50;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 10px 5px; /* زيادة المسافة بين الأزرار */
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    flex: 1 1 auto; /* يجعل الأزرار تتوزع بشكل متساوٍ */
+    min-width: 100px;
+    text-align: center;
 }
 
 /* تأثير عند تمرير الفأرة فوق الزر */
 .button:hover {
-    background-color: #4CAF50; /* تغيير لون الخلفية عند التمرير */
-    color: white; /* تغيير لون النص عند التمرير */
-    transform: scale(1.05); /* تكبير الزر قليلاً عند التمرير */
+    background-color: #4CAF50;
+    color: white;
+    transform: scale(1.05);
 }
 
 /* تحسين عرض المستطيل على شاشات الهواتف */
 @media (max-width: 768px) {
     .button-container {
-        flex-direction: row; /* التأكد من أن الأزرار في نفس الصف */
-        align-items: center; /* توسيط الأزرار */
+        flex-direction: row;
+        align-items: center;
     }
+}
 
+/* تحسين تنسيق المحتوى */
+.title {
+    text-align: center;
+    color: #2E7D32;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* تنسيق القوائم المنسدلة */
+.dropdown {
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.dropbtn {
+    background-color: #388E3C;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropbtn:hover {
+    background-color: #2E7D32;
+    transform: scale(1.02);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-content .law-box {
+    display: flex;
+    align-items: center; /* توسيط العناصر عموديًا */
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content .law-box:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content .law-box:last-child {
+    border-bottom: none;
+}
+
+.law-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.law-text {
+    color: #388E3C;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* تحسين العرض على الشاشات الصغيرة */
+@media (max-width: 600px) {
+    .dropbtn {
+        font-size: 14px;
+    }
+    .law-box p {
+        font-size: 14px;
+    }
+    .header-image, .button-container {
+        margin: 10px auto;
+        width: 100%;
+    }
     .button {
-        width: auto; /* جعل عرض الزر تلقائي */
-        margin: 0 5px; /* مساحة بين الأزرار */
+        font-size: 14px;
+        padding: 10px 15px;
     }
-}
-
-.laws-section {
-    background-color: #4CAF50; /* لون القسم باللون الأخضر */
-    color: white; /* لون النص */
-    margin: 20px auto; /* تباعد من الأعلى والأسفل */
-    padding: 20px; /* تباعد داخلي */
-    border-radius: 8px; /* زوايا دائرية */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* تأثير ظل */
-    max-width: 600px; /* الحد الأقصى لعرض القسم */
-}
-
-.law-title {
-    cursor: pointer; /* تغيير شكل المؤشر عند المرور بالماوس */
-    transition: color 0.3s; /* تأثير تغيير اللون */
-}
-
-.law-title:hover {
-    color: #ffeb3b; /* تغيير اللون عند المرور بالماوس */
-}
-
-.law-content {
-    display: none; /* إخفاء المحتوى بشكل افتراضي */
-    margin-top: 10px; /* تباعد علوي */
-    animation: fadeIn 0.5s; /* تأثير الظهور */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0; /* بداية الشفافية */
-    }
-    to {
-        opacity: 1; /* نهاية الشفافية */
-    }
-}
-
-.law-content.show {
-    display: block; /* عرض المحتوى */
-    animation: fadeIn 0.5s; /* تطبيق تأثير الظهور */
 }
