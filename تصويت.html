@@ -41,6 +41,28 @@
       </div>
       <button onclick="vote('player1')">تصويت</button>
     </div>
+    <script>
+      function filterPlayers() {
+          const classFilter = document.getElementById('class-filter').value;
+          const sectionFilter = document.getElementById('section-filter').value;
+          const players = document.querySelectorAll('.player');
+
+          players.forEach(player => {
+              const playerClass = player.dataset.class;
+              const playerSection = player.dataset.section;
+
+              // التحقق من مطابقة الفلترين أو عرض الكل
+              const matchesClass = (classFilter === 'all' || playerClass === classFilter);
+              const matchesSection = (sectionFilter === 'all' || playerSection === sectionFilter);
+
+              if (matchesClass && matchesSection) {
+                  player.style.display = 'block'; // إظهار العنصر
+              } else {
+                  player.style.display = 'none'; // إخفاء العنصر
+              }
+          });
+      }
+  </script>
   
     <!-- اللاعب 2 -->
     <div class="player" data-class="ثالث" data-section="1">
@@ -1165,7 +1187,7 @@
       <img src="لوور.png" alt="Logo 3" class="logo">
     </div>
 
-    <h3>أدارة وتطوير</h3>
+    <h3>إدارة وتطوير</h3>
     <div class="developers">
       <div class="developer-box">
         <p>شادي رفيق</p>
@@ -1272,12 +1294,10 @@
 
 
 <script type="module">
-  // استيراد مكتبات Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
   import { getDatabase, ref, get, update, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
-  // تهيئة تطبيق Firebase باستخدام الإعدادات الخاصة به
   const firebaseConfig = {
     apiKey: "AIzaSyA6j7EJGxC1PIvvBZWI4iGUL6bUlsExIAE",
     authDomain: "srlor-64eed.firebaseapp.com",
@@ -1288,12 +1308,10 @@
     appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
   };
 
-  // تهيئة التطبيق وقاعدة البيانات والمصادقة
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
   const auth = getAuth(app);
 
-  // تسجيل المستخدم بشكل مجهول
   let userId = null;
   signInAnonymously(auth)
     .then((userCredential) => {
@@ -1303,65 +1321,21 @@
       console.error('خطأ في تسجيل الدخول المجهول:', error);
     });
 
-  // المرجع إلى جدول التصويت في قاعدة البيانات
   const votesRef = ref(database, 'votes');
-  const userVotesRef = ref(database, `userVotes`);
 
-  // تخزين القيم الافتراضية للأصوات
   let votes = {};
   onValue(votesRef, (snapshot) => {
     votes = snapshot.val() || {};
     updatePercentages();
+    updateTopPlayers();
   });
 
-  // المتغير لتتبع إجمالي الأصوات
-  let totalVotes = 0;
-
-  // وظيفة التصويت المعدلة لمنع التكرار
-  window.vote = function(playerId) {
-    if (!userId) {
-      showAlert('حدث خطأ. الرجاء إعادة المحاولة لاحقًا.');
-      return;
-    }
-
-    // التحقق من أن المستخدم لم يصوت مسبقًا
-    get(ref(database, `userVotes/${userId}`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        showAlert('لقد قمت بالتصويت بالفعل!');
-        return;
-      }
-
-      // تحديث عدد الأصوات للاعب المحدد
-      votes[playerId] = (votes[playerId] || 0) + 1;
-
-      // تحديث قاعدة البيانات
-      const updates = {
-        [`votes/${playerId}`]: votes[playerId],
-        [`userVotes/${userId}`]: playerId,
-      };
-
-      update(ref(database), updates)
-        .then(() => {
-          showAlert('تم تسجيل صوتك بنجاح!');
-        })
-        .catch((error) => {
-          console.error('خطأ في تحديث البيانات:', error);
-        });
-    }).catch((error) => {
-      console.error('خطأ في جلب البيانات:', error);
-      showAlert('حدث خطأ أثناء التصويت. الرجاء المحاولة مرة أخرى.');
-    });
-  };
-
-  // تحديث نسب الأصوات في الواجهة
   function updatePercentages() {
-    totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
+    const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
 
     for (const playerId in votes) {
-      // حساب النسبة المئوية لكل لاعب
       const percentage = totalVotes > 0 ? ((votes[playerId] / totalVotes) * 100).toFixed(1) : 0;
 
-      // تحديث النص وشريط التقدم لكل لاعب
       const percentageElement = document.getElementById(`percentage-${playerId}`);
       const progressBarElement = document.getElementById(`progress-${playerId}`);
 
@@ -1372,18 +1346,58 @@
     }
   }
 
-  // وظيفة لإظهار التحذيرات في نافذة منبثقة
-  function showAlert(message) {
-    const alertOverlay = document.getElementById('custom-alert');
-    const alertMessage = document.getElementById('alert-message');
+  function updateTopPlayers() {
+    const sortedPlayers = Object.entries(votes)
+      .sort(([, votesA], [, votesB]) => votesB - votesA)
+      .slice(0, 3);
 
-    alertMessage.textContent = message;
-    alertOverlay.style.display = 'flex';
+    const topPlayersContainer = document.getElementById('top-players');
+    topPlayersContainer.innerHTML = '';
+
+    sortedPlayers.forEach(([playerId, votes]) => {
+      const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
+      const percentage = totalVotes > 0 ? ((votes / totalVotes) * 100).toFixed(1) : 0;
+
+      const playerElement = document.createElement('div');
+      playerElement.className = 'top-player';
+      playerElement.innerHTML = `
+        <h3>${playerId}</h3>
+        <p>${percentage}%</p>
+      `;
+      topPlayersContainer.appendChild(playerElement);
+    });
   }
 
-  // وظيفة لإغلاق النافذة المنبثقة
-  window.closeAlert = function() {
-    document.getElementById('custom-alert').style.display = 'none';
+  window.vote = function(playerId) {
+    if (!userId) {
+      alert('حدث خطأ. الرجاء إعادة المحاولة لاحقًا.');
+      return;
+    }
+
+    get(ref(database, `userVotes/${userId}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        alert('لقد قمت بالتصويت بالفعل!');
+        return;
+      }
+
+      votes[playerId] = (votes[playerId] || 0) + 1;
+
+      const updates = {
+        [`votes/${playerId}`]: votes[playerId],
+        [`userVotes/${userId}`]: playerId,
+      };
+
+      update(ref(database), updates)
+        .then(() => {
+          alert('تم تسجيل صوتك بنجاح!');
+        })
+        .catch((error) => {
+          console.error('خطأ في تحديث البيانات:', error);
+        });
+    }).catch((error) => {
+      console.error('خطأ في جلب البيانات:', error);
+      alert('حدث خطأ أثناء التصويت. الرجاء المحاولة مرة أخرى.');
+    });
   };
 </script>
 
