@@ -1274,7 +1274,8 @@
 <script type="module">
   // استيراد مكتبات Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getDatabase, ref, set, get, onValue, update } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+  import { getDatabase, ref, get, update, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+  import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
   // تهيئة تطبيق Firebase باستخدام الإعدادات الخاصة به
   const firebaseConfig = {
@@ -1287,53 +1288,65 @@
     appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
   };
 
-  // تهيئة التطبيق وقاعدة البيانات
+  // تهيئة التطبيق وقاعدة البيانات والمصادقة
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
+  const auth = getAuth(app);
+
+  // تسجيل المستخدم بشكل مجهول
+  let userId = null;
+  signInAnonymously(auth)
+    .then((userCredential) => {
+      userId = userCredential.user.uid;
+    })
+    .catch((error) => {
+      console.error('خطأ في تسجيل الدخول المجهول:', error);
+    });
 
   // المرجع إلى جدول التصويت في قاعدة البيانات
   const votesRef = ref(database, 'votes');
+  const userVotesRef = ref(database, `userVotes`);
 
   // تخزين القيم الافتراضية للأصوات
   let votes = {};
-  for (let i = 1; i <= 101; i++) {
-    votes[`player${i}`] = 0;
-  }
-
-  // جلب القيم الحالية من قاعدة البيانات وتحديث الواجهة
   onValue(votesRef, (snapshot) => {
-    votes = snapshot.val() || votes;
+    votes = snapshot.val() || {};
     updatePercentages();
   });
 
   // المتغير لتتبع إجمالي الأصوات
   let totalVotes = 0;
 
-  // وظيفة التصويت المعدلة
+  // وظيفة التصويت المعدلة لمنع التكرار
   window.vote = function(playerId) {
-    // التحقق من أن المستخدم لم يصوت مسبقًا باستخدام Local Storage
-    if (localStorage.getItem('hasVoted')) {
-      showAlert('لقد قمت بالتصويت بالفعل!');
+    if (!userId) {
+      showAlert('حدث خطأ. الرجاء إعادة المحاولة لاحقًا.');
       return;
     }
 
-    // جلب القيم الحالية من قاعدة البيانات
-    get(votesRef).then((snapshot) => {
+    // التحقق من أن المستخدم لم يصوت مسبقًا
+    get(ref(database, `userVotes/${userId}`)).then((snapshot) => {
       if (snapshot.exists()) {
-        votes = snapshot.val();
+        showAlert('لقد قمت بالتصويت بالفعل!');
+        return;
       }
 
       // تحديث عدد الأصوات للاعب المحدد
       votes[playerId] = (votes[playerId] || 0) + 1;
 
-      // تحديث قاعدة البيانات بالقيم الجديدة
-      update(ref(database, 'votes'), votes).then(() => {
-        // تخزين أن المستخدم قد قام بالتصويت
-        localStorage.setItem('hasVoted', 'true');
-        showAlert('تم تسجيل صوتك بنجاح!');
-      }).catch((error) => {
-        console.error('خطأ في تحديث البيانات:', error);
-      });
+      // تحديث قاعدة البيانات
+      const updates = {
+        [`votes/${playerId}`]: votes[playerId],
+        [`userVotes/${userId}`]: playerId,
+      };
+
+      update(ref(database), updates)
+        .then(() => {
+          showAlert('تم تسجيل صوتك بنجاح!');
+        })
+        .catch((error) => {
+          console.error('خطأ في تحديث البيانات:', error);
+        });
     }).catch((error) => {
       console.error('خطأ في جلب البيانات:', error);
       showAlert('حدث خطأ أثناء التصويت. الرجاء المحاولة مرة أخرى.');
@@ -1359,26 +1372,6 @@
     }
   }
 
-  // وظيفة تصفية اللاعبين بناءً على الصف والشعبة
-  window.filterPlayers = function() {
-    const classFilter = document.getElementById('class-filter').value;
-    const sectionFilter = document.getElementById('section-filter').value;
-    const players = document.querySelectorAll('.player');
-
-    players.forEach(player => {
-      const playerClass = player.getAttribute('data-class');
-      const playerSection = player.getAttribute('data-section');
-
-      // عرض أو إخفاء اللاعبين بناءً على التصفية المحددة
-      if ((classFilter === 'all' || classFilter === playerClass) &&
-          (sectionFilter === 'all' || sectionFilter === playerSection)) {
-        player.style.display = '';
-      } else {
-        player.style.display = 'none';
-      }
-    });
-  };
-
   // وظيفة لإظهار التحذيرات في نافذة منبثقة
   function showAlert(message) {
     const alertOverlay = document.getElementById('custom-alert');
@@ -1388,12 +1381,12 @@
     alertOverlay.style.display = 'flex';
   }
 
-// وظيفة لإغلاق النافذة المنبثقة
-window.closeAlert = function() {
-  document.getElementById('custom-alert').style.display = 'none';
-};
-
+  // وظيفة لإغلاق النافذة المنبثقة
+  window.closeAlert = function() {
+    document.getElementById('custom-alert').style.display = 'none';
+  };
 </script>
+
 
 </body>
 </html>
