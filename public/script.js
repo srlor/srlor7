@@ -42,3 +42,22 @@ themeToggleBtn.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
+
+
+// تحديد العناصر
+const popup = document.getElementById('popup');
+const closeBtn = document.getElementById('close-btn');
+const video = document.getElementById('popup-video');
+
+// إغلاق الإعلان عند انتهاء الفيديو
+video.addEventListener('ended', () => {
+    popup.style.display = 'none';
+});
+
+// إغلاق الإعلان عند الضغط على زر الإغلاق
+closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+  

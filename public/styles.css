@@ -8,23 +8,7 @@ body {
     padding: 20px;
 }
 
-/* تنسيق قسم رأس الموقع */
-.header-image {
-    width: 100%;
-    max-width: 90%;
-    height: auto;
-    border: 5px solid #17b331;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
-    margin: 20px auto;
-    display: block;
-}
 
-/* تأثير عند تمرير الفأرة فوق الصورة */
-.header-image:hover {
-    transform: scale(1.05);
-}
 
 /* تنسيق مستطيل الأزرار */
 .button-container {
@@ -60,10 +44,16 @@ body {
 
 /* تأثير عند تمرير الفأرة فوق الزر */
 .button:hover {
-    background-color: #1884e9;
+    background-color: #2e813c;
     color: white;
     transform: scale(1.05);
 }
+
+/* إضافة مسافة بين الأيقونة والنص */
+.button i {
+    margin-right: 20px; /* المسافة بين الأيقونة والنص */
+}
+
 
 /* تحسين عرض المستطيل على شاشات الهواتف */
 @media (max-width: 700px) {
@@ -76,21 +66,24 @@ body {
 /* تحسين تنسيق المحتوى */
 .title {
     text-align: center;
-    color: #17b331; /* لون أخضر عادي في الوضع النهاري */
+    color: #17b331; /* لون أخضر عادي */
     font-weight: bold;
     margin-bottom: 18px;
 }
 
 /* تغيير اللون في الوضع الليلي */
 body.dark-mode .title {
-    color: #ffffff; /* لون أخضر فاتح أو يمكنك استبداله بالأبيض (#ffffff) حسب تفضيلك */
+    color: #ffffff; /* لون أخضر فاتح أو الأبيض حسب تفضيلك */
 }
 
 /* تنسيق القوائم المنسدلة */
 .dropdown {
     position: relative;
     display: block;
-    margin-bottom: 20px;
+    margin: 20px auto; /* توسيط الزر أفقيًا */
+    width: 90%; /* عرض متجاوب */
+    max-width: 400px; /* أقصى عرض للقائمة */
+    box-sizing: border-box; /* لضمان دقة العرض */
 }
 
 .dropbtn {
@@ -102,44 +95,48 @@ body.dark-mode .title {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%; /* عرض كامل */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* تحسين الظل */
+    text-align: center;
+    font-weight: bold;
 }
 
 .dropbtn:hover {
-    background-color: #1884e9;
-    transform: scale(1.02);
+    background-color: #226b2e;
+    transform: scale(1.05); /* تكبير بسيط عند التمرير */
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 100%;
+    width: 100%; /* العرض الكامل */
     border: 1px solid #ccc;
     border-radius: 5px;
     z-index: 1;
     margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* تحسين الظل */
     opacity: 0;
+    transform: translateY(-10px); /* بدءًا من أعلى القائمة */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* تأثير ناعم */
 }
 
 .dropdown-content.show {
     display: block;
     opacity: 1;
+    transform: translateY(0); /* ظهور كامل مع انزلاق لأسفل */
 }
 
 .dropdown-content .law-box {
     display: flex;
-    align-items: center; /* توسيط العناصر عموديًا */
-    padding: 10px;
+    align-items: center; /* توسيط عمودي */
+    padding: 12px;
     border-bottom: 1px solid #e0e0e0;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .dropdown-content .law-box:hover {
-    background-color: #f1f1f1;
+    background-color: #f8f8f8; /* لون خفيف عند التمرير */
 }
 
 .dropdown-content .law-box:last-child {
@@ -155,7 +152,23 @@ body.dark-mode .title {
 .law-text {
     color: #388E3C;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+/* تحسين دعم الشاشات الصغيرة */
+@media (max-width: 600px) {
+    .dropdown {
+        width: 95%; /* ضبط العرض لتجنب الخروج من الأطراف */
+    }
+
+    .law-image {
+        width: 40px; /* تصغير حجم الصورة */
+        height: 40px;
+    }
+
+    .law-text {
+        font-size: 14px; /* تقليل حجم النص */
+    }
 }
 
 /* تحسين العرض على الشاشات الصغيرة */
@@ -228,3 +241,71 @@ body.dark-mode .logo-img {
     padding: 5px;
     border-radius: 5px; /* حواف ناعمة حول الشعار */
 }
+
+
+
+
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* عرض يناسب جميع الأجهزة */
+    max-width: 600px; /* أقصى عرض للإعلان */
+    aspect-ratio: 16 / 9; /* نسبة العرض إلى الارتفاع */
+    background: black; /* خلفية الفيديو نفسه */
+    border: 3px solid #00f511; /* حواف بنمط النيون */
+    border-radius: 10px; /* زوايا مستديرة */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* ظل للعنصر */
+    z-index: 9999;
+    animation: popup-fade-in 0.7s ease-out;
+}
+
+@keyframes popup-fade-in {
+    0% {
+        transform: translate(-50%, -60%) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+video {
+    display: block;
+    width: 100%; /* الفيديو يملأ عرض الإعلان */
+    height: 100%; /* الفيديو يملأ ارتفاع الإعلان */
+}
+
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00f511; /* لون زر نيون */
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#close-btn:hover {
+    background: rgba(0, 255, 200, 1); /* تأثير عند تمرير الماوس */
+    transform: scale(1.1);
+}
+
+
+
+
+

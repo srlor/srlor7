@@ -1,0 +1,355 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; 
+  color: #333;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* بطاقة الفريق */
+.team-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewY(-5deg);
+  opacity: 0.2;
+}
+
+.logo img {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.team-info {
+  text-align: center;
+  flex-grow: 1;
+  padding: 0 15px;
+  position: relative;
+}
+
+.team-info h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  margin: 0;
+}
+
+.score {
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* تأثير النص يظهر تلقائيًا */
+.team-info h2,
+.score {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease-out;
+}
+
+
+/* قسم إحصائيات الفريق */
+.team-stats {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.team-stats h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+  max-width: 100px;
+}
+
+.stat i {
+  font-size: 2rem;
+  color: var(--stat-color);
+}
+
+.stat .count {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--stat-color);
+  margin-top: 5px;
+}
+
+.stat p {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+
+/****** قسم اللاعبين ******/
+.players {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.players h3 {
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #4caf50;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/****** تنسيق بطاقات اللاعبين ******/
+.player-card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/****** تنسيق معلومات اللاعب ******/
+.player-info {
+  display: flex;
+  align-items: center;
+}
+
+.player-rank {
+  font-size: 1.2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-rank::before {
+  content: attr(data-rank);
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.captain-icon {
+  color: #ff5722;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+
+/****** تنسيق إحصائيات اللاعب ******/
+.player-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.player-stats div {
+  text-align: center;
+}
+
+.player-stats i {
+  font-size: 1.2rem;
+  color: #4caf50;
+  margin-bottom: 5px;
+  margin-right: 8px; /* مسافة بين الأيقونة والرقم */
+}
+
+.player-stats .count {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #222;
+}
+
+/****** تخصيص ألوان الإحصائيات ******/
+.player-stats .goals {
+  color: #e91e63; /* لون للأهداف */
+}
+
+.player-stats .games {
+  color: #2196f3; /* لون لمرات اللعب */
+}
+
+.player-stats p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+/* تحسين استجابة الشاشة الصغيرة */
+@media (max-width: 600px) {
+  .player-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .player-info h4 {
+    margin-left: 0;
+  }
+
+  .player-stats {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .stats {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-evenly;
+  }
+
+  .stat i {
+    font-size: 1.5rem; /* تصغير الأيقونات */
+  }
+}
+
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333;
+  --card-bg-color: #fff;
+  --icon-color: #0f4bcc;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --primary-color: #202cd1;
+  --highlight-color: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg-color: #1e1e1e;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* بطاقة الفريق */
+.team-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-color), #066094);
+  color: var(--text-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+/* باقي التنسيقات */
+.logo img {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.team-info h2,
+.score {
+  color: var(--highlight-color);
+}
+
+.team-stats,
+.player-card {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.stat i {
+  color: var(--icon-color);
+}
+
+.player-rank::before {
+  background-color: var(--primary-color);
+}
+
+.captain-icon {
+  color: #ff5722;
+}
+
+/* تنسيق الشاشة الصغيرة كما هو */

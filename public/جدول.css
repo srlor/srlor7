@@ -1,0 +1,398 @@
+/*
+  إعدادات النصوص والخلفية الأساسية للموقع
+  - تحديد نوع الخط، والخلفية، ومحاذاة النصوص
+  - إعداد الاتجاه إلى "rtl" للغة العربية
+*/
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    direction: rtl; /* الاتجاه من اليمين إلى اليسار */
+}
+
+/* إضافة تنسيق للتباعد حول المحتوى الرئيسي */
+main {
+    padding: 1em;
+}
+
+/*
+  تنسيق العنوان الرئيسي:
+  - حجم النص ولونه
+  - تحديد الهامش والأسلوب النسبي لعنصر ديكور الخط تحت العنوان
+*/
+h2 {
+    font-size: 2em;
+    color: #388e3c; /* اللون الأخضر الداكن */
+    margin-bottom: 1em;
+    position: relative; /* لجعل العناصر الفرعية داخل العنصر النسبي */
+}
+
+/* إنشاء خط زخرفي تحت العنوان */
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 5px;
+    background-color: #66bb6a; /* لون الخط الأخضر */
+    margin: 0.5em auto 0 auto; /* الخط في المنتصف */
+    border-radius: 3px; /* زوايا الخط دائرية */
+}
+
+/*
+  تصميم الصندوق النصي:
+  - إعداد الزوايا الدائرية، الظلال، والحواف البارزة
+  - تأثير الحركات عند تحميل الصفحة أو تمرير الفأرة
+*/
+.match-box {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* ظل خفيف للصندوق */
+    padding: 1.5em;
+    margin: 1.5em auto;
+    width: 90%;
+    max-width: 600px;
+    color: #333;
+    text-align: center;
+    border-left: 5px solid #66bb6a; /* خط زخرفي أخضر على الجانب الأيسر */
+    opacity: 0; /* لجعل الصندوق غير مرئي عند البداية */
+    transform: scale(0.9); /* تصغير الحجم بشكل طفيف */
+    animation: fadeInBox 0.8s forwards; /* حركة الظهور التدريجية */
+    animation-delay: 0.2s; /* تأخير الحركة */
+}
+
+/* تأخير إضافي لحركة الصناديق اللاحقة */
+.match-box:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+/* تأثير عند تمرير الفأرة على الصندوق */
+.match-box:hover {
+    transform: translateY(-10px); /* رفع الصندوق قليلاً */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* زيادة الظل */
+}
+
+/* تنسيق الفقرات داخل الصندوق */
+.match-box p {
+    margin: 0.5em 0;
+    font-size: 1.1em;
+}
+
+/*
+  تصميم العناصر الفرق:
+  - التوزيع الأفقي للعناصر
+  - حركة الانتقال العمودية
+*/
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+    opacity: 0;
+    transform: translateY(20px); /* الانتقال من الأسفل */
+    animation: fadeInUp 0.6s forwards; /* حركة الظهور للأعلى */
+    animation-delay: 0.5s;
+}
+
+/* تصميم كل عنصر فريق */
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* تصميم الصور داخل الفريق */
+.team img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5em;
+    border-radius: 10%; /* جعل الصورة مستطيلة بزوايا دائرية */
+    border-left: 3px solid #66bb6a; /* خط زخرفي على الجانب الأيسر */
+}
+
+/* تنسيق اسم الفريق */
+.team strong {
+    font-size: 1em;
+}
+
+/* تنسيق النتيجة */
+.result {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #388e3c;
+    margin: 1em 0;
+}
+
+/*
+  حركات خاصة للصناديق والعناصر:
+  - حركة الصعود التدريجي
+*/
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* حركة الظهور التدريجي للصندوق */
+@keyframes fadeInBox {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*
+  إعدادات الوسائط:
+  - تحسين العرض على الشاشات الصغيرة
+*/
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .match-box {
+        padding: 1em;
+    }
+
+    .team img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .result {
+        font-size: 1.8em;
+    }
+}
+
+/*
+  تنسيق شريط التنقل:
+  - وضع ثابت في الأعلى، وتصميم مميز للأزرار
+*/
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navigation-bar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* المسافة بين الأزرار */
+    position: fixed; /* جعل الأزرار ثابتة في أعلى الشاشة */
+    top: 10px;
+    width: 100%; /* تغطية العرض الكامل */
+    z-index: 1000; /* لضمان بقاء الأزرار فوق العناصر الأخرى */
+}
+
+/* تنسيق العناصر داخل شريط التنقل */
+.navigation-bar li {
+    display: inline-block;
+}
+
+/* تنسيق الروابط داخل شريط التنقل */
+.navigation-bar a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #8BC34A; /* اللون الأخضر الفاتح */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px; /* حواف دائرية */
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* تأثير سلس عند التغيير */
+}
+
+/* تأثير عند مرور الفأرة على الأزرار */
+.navigation-bar a:hover {
+    background-color: #66bb6a; /* تغيير اللون عند التمرير */
+}
+
+/* تأثير عند الضغط على الزر */
+.navigation-bar a:active {
+    background-color: #d32f2f; /* اللون الأحمر عند الضغط */
+}
+
+/* تحديد الزر النشط */
+.navigation-bar a.active {
+    background-color: #d32f2f; /* اللون الأحمر النشط */
+}
+
+
+.goal-details {
+    font-family: 'Cairo', sans-serif;
+    color: #0b7013;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.goal-summary {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.goal-summary:hover {
+    background-color: #1e8c37;
+}
+
+.goal-list {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.goal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.goal-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.player-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.goal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.goal-icon {
+    font-size: 14px;
+}
+
+.goal-count {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.goal-details {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 2px solid #ddd;
+    z-index: 10;
+}
+
+
+
+
+/* إعدادات التفاصيل */
+.goals-section {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #0b7013;
+}
+
+/* زر التفاصيل */
+.goals-summary {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0b7013;
+    background: none;
+    padding: 10px 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* السهم */
+.arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* تأثير عند الفتح */
+details[open] .arrow {
+    transform: rotate(180deg);
+}
+
+.goals-list {
+    margin-top: 10px;
+}
+
+/* إعدادات بطاقة اللاعب */
+.player-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #0b7013;
+    padding-bottom: 5px;
+}
+
+.player-name {
+    flex: 1;
+    text-align: start;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0b7013;
+}
+
+.player-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+}
+
+.player-icon {
+    color: #28A745;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.player-goals {
+    font-size: 12px;
+    color: #333;
+}

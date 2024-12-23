@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التصويت لأفضل لاعب في دوري المدرسة</title>
+  <link rel="stylesheet" href="تصويت.css">
+  <!-- مكتبة Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <header>
+    SR LOR
+  </header>
+
+  <div class="filters">
+    <select id="class-filter" onchange="filterPlayers()">
+      <option value="all">كل الصفوف</option>
+      <option value="اولى">أولى ثانوي</option>
+      <option value="ثاني">ثاني ثانوي</option>
+      <option value="ثالث">ثالث ثانوي</option>
+    </select>
+    <select id="section-filter" onchange="filterPlayers()">
+      <option value="all">كل الشعب</option>
+      <option value="1">الشعبة 1</option>
+      <option value="2">الشعبة 2</option>
+      <option value="3">الشعبة 3</option>
+      <option value="4">الشعبة 4</option>
+    </select>
+  </div>
+
+  <main id="players-container">
+    <!-- اللاعب 1 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 1">
+      <h2>شادي رفيق</h2>
+      <p class="percentage" id="percentage-player1">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player1"></div>
+      </div>
+      <button onclick="vote('player1')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 2 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 2">
+      <h2>محمد زياد</h2>
+      <p class="percentage" id="percentage-player2">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player2"></div>
+      </div>
+      <button onclick="vote('player2')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 3 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 3">
+      <h2>عبدالله مبارك الشهراني</h2>
+      <p class="percentage" id="percentage-player3">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player3"></div>
+      </div>
+      <button onclick="vote('player3')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 4 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 4">
+      <h2>عبد العزيز عبد الرحمن ابو زوعة</h2>
+      <p class="percentage" id="percentage-player4">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player4"></div>
+      </div>
+      <button onclick="vote('player4')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 5 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 5">
+      <h2>عبد الرحمن عبد السبحان</h2>
+      <p class="percentage" id="percentage-player5">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player5"></div>
+      </div>
+      <button onclick="vote('player5')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 6 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 6">
+      <h2>مسفر محمد سعد</h2>
+      <p class="percentage" id="percentage-player6">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player6"></div>
+      </div>
+      <button onclick="vote('player6')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 7 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 7">
+      <h2>مهند محمد علي الشهري</h2>
+      <p class="percentage" id="percentage-player7">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player7"></div>
+      </div>
+      <button onclick="vote('player7')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 8 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 8">
+      <h2>احمد علي العمري</h2>
+      <p class="percentage" id="percentage-player8">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player8"></div>
+      </div>
+      <button onclick="vote('player8')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 9 -->
+    <div class="player" data-class="ثالث" data-section="1">
+      <img src="ثالث 1.png" alt="لاعب 9">
+      <h2>فراس عبد الرحمن</h2>
+      <p class="percentage" id="percentage-player9">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player9"></div>
+      </div>
+      <button onclick="vote('player9')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 10 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 10">
+    <h2>أحمد المنتصر بالله</h2>
+    <p class="percentage" id="percentage-player10">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player10"></div>
+    </div>
+    <button onclick="vote('player10')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 11 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 11">
+    <h2>محمد عمران</h2>
+    <p class="percentage" id="percentage-player11">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player11"></div>
+    </div>
+    <button onclick="vote('player11')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 12 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 12">
+    <h2>محمد علي</h2>
+    <p class="percentage" id="percentage-player12">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player12"></div>
+    </div>
+    <button onclick="vote('player12')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 13 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 13">
+    <h2>عمر المنتصر بالله</h2>
+    <p class="percentage" id="percentage-player13">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player13"></div>
+    </div>
+    <button onclick="vote('player13')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 14 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 14">
+    <h2>أمجد عصام</h2>
+    <p class="percentage" id="percentage-player14">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player14"></div>
+    </div>
+    <button onclick="vote('player14')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 15 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 15">
+    <h2>محمد عثمان</h2>
+    <p class="percentage" id="percentage-player15">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player15"></div>
+    </div>
+    <button onclick="vote('player15')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 16 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 16">
+    <h2>عبدالله محمد</h2>
+    <p class="percentage" id="percentage-player16">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player16"></div>
+    </div>
+    <button onclick="vote('player16')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 17 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 17">
+    <h2>أحمدالسيد</h2>
+    <p class="percentage" id="percentage-player17">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player17"></div>
+    </div>
+    <button onclick="vote('player17')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 18 -->
+  <div class="player" data-class="ثالث" data-section="2">
+    <img src="ثالث 2.png" alt="لاعب 18">
+    <h2>نادر الشهراني</h2>
+    <p class="percentage" id="percentage-player18">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player18"></div>
+    </div>
+    <button onclick="vote('player18')">تصويت</button>
+  </div>
+
+    <!-- اللاعب 19 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 19">
+      <h2>طلال حسن</h2>
+      <p class="percentage" id="percentage-player19">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player19"></div>
+      </div>
+      <button onclick="vote('player19')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 20 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 20">
+      <h2>بهاء أحمد</h2>
+      <p class="percentage" id="percentage-player20">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player20"></div>
+      </div>
+      <button onclick="vote('player20')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 21 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 21">
+      <h2>محمد نبيل</h2>
+      <p class="percentage" id="percentage-player21">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player21"></div>
+      </div>
+      <button onclick="vote('player21')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 22 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 22">
+      <h2>نايف أحمد</h2>
+      <p class="percentage" id="percentage-player22">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player22"></div>
+      </div>
+      <button onclick="vote('player22')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 23 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 23">
+      <h2>عبدالإله شار</h2>
+      <p class="percentage" id="percentage-player23">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player23"></div>
+      </div>
+      <button onclick="vote('player23')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 24 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 24">
+      <h2>معاذ ظافر محمد الشهري</h2>
+      <p class="percentage" id="percentage-player24">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player24"></div>
+      </div>
+      <button onclick="vote('player24')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 25 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 25">
+      <h2>حاتم البسامي</h2>
+      <p class="percentage" id="percentage-player25">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player25"></div>
+      </div>
+      <button onclick="vote('player25')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 26 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 26">
+      <h2>فيصل علي</h2>
+      <p class="percentage" id="percentage-player26">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player26"></div>
+      </div>
+      <button onclick="vote('player26')">تصويت</button>
+    </div>
+  
+    <!-- اللاعب 27 -->
+    <div class="player" data-class="ثالث" data-section="3">
+      <img src="ثالث 3.png" alt="لاعب 27">
+      <h2>عبد العزيز بكر</h2>
+      <p class="percentage" id="percentage-player27">0%</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-player27"></div>
+      </div>
+      <button onclick="vote('player27')">تصويت</button>
+    </div>
+  
+    
+
+      <!-- اللاعب 28 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 28">
+        <h2>عبد العزيز عبد الله الشهري</h2>
+        <p class="percentage" id="percentage-player28">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player28"></div>
+        </div>
+        <button onclick="vote('player28')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 29 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 29">
+        <h2>حامد احمد</h2>
+        <p class="percentage" id="percentage-player29">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player29"></div>
+        </div>
+        <button onclick="vote('player29')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 30 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 30">
+        <h2>محمد رامي</h2>
+        <p class="percentage" id="percentage-player30">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player30"></div>
+        </div>
+        <button onclick="vote('player30')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 31 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 31">
+        <h2>عبد الله سعد</h2>
+        <p class="percentage" id="percentage-player31">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player31"></div>
+        </div>
+        <button onclick="vote('player31')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 32 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 32">
+        <h2>عبد الملك عبد الله</h2>
+        <p class="percentage" id="percentage-player32">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player32"></div>
+        </div>
+        <button onclick="vote('player32')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 33 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 33">
+        <h2>معن البكري</h2>
+        <p class="percentage" id="percentage-player33">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player33"></div>
+        </div>
+        <button onclick="vote('player33')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 34 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 34">
+        <h2>زياد البارقي</h2>
+        <p class="percentage" id="percentage-player34">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player34"></div>
+        </div>
+        <button onclick="vote('player34')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 35 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 35">
+        <h2>محمد الطاهر</h2>
+        <p class="percentage" id="percentage-player35">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player35"></div>
+        </div>
+        <button onclick="vote('player35')">تصويت</button>
+      </div>
+    
+      <!-- اللاعب 36 -->
+      <div class="player" data-class="ثالث" data-section="4">
+        <img src="ثالث  4.png" alt="لاعب 36">
+        <h2>عمر الملحم</h2>
+        <p class="percentage" id="percentage-player36">0%</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-player36"></div>
+        </div>
+        <button onclick="vote('player36')">تصويت</button>
+      </div>
+     
+        <!-- اللاعب 37 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 37">
+          <h2>عبدالله علي</h2>
+          <p class="percentage" id="percentage-player37">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player37"></div>
+          </div>
+          <button onclick="vote('player37')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 38 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 38">
+          <h2>محمد ظافر</h2>
+          <p class="percentage" id="percentage-player38">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player38"></div>
+          </div>
+          <button onclick="vote('player38')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 39 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 39">
+          <h2>هيثم عبدالرحمن</h2>
+          <p class="percentage" id="percentage-player39">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player39"></div>
+          </div>
+          <button onclick="vote('player39')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 40 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 40">
+          <h2>يعقوب أسامة</h2>
+          <p class="percentage" id="percentage-player40">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player40"></div>
+          </div>
+          <button onclick="vote('player40')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 41 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 41">
+          <h2>محمد تامر</h2>
+          <p class="percentage" id="percentage-player41">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player41"></div>
+          </div>
+          <button onclick="vote('player41')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 42 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 42">
+          <h2>عبدالله محسن</h2>
+          <p class="percentage" id="percentage-player42">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player42"></div>
+          </div>
+          <button onclick="vote('player42')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 43 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 43">
+          <h2>تركي جمعان</h2>
+          <p class="percentage" id="percentage-player43">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player43"></div>
+          </div>
+          <button onclick="vote('player43')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 44 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 44">
+          <h2>سعود ظافر</h2>
+          <p class="percentage" id="percentage-player44">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player44"></div>
+          </div>
+          <button onclick="vote('player44')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 45 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 45">
+          <h2>أسامة مبارك</h2>
+          <p class="percentage" id="percentage-player45">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player45"></div>
+          </div>
+          <button onclick="vote('player45')">تصويت</button>
+        </div>
+      
+        <!-- اللاعب 46 -->
+        <div class="player" data-class="ثاني" data-section="1">
+          <img src="ثاني 1.png" alt="لاعب 46">
+          <h2>فيصل حسن الشهري</h2>
+          <p class="percentage" id="percentage-player46">0%</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-player46"></div>
+          </div>
+          <button onclick="vote('player46')">تصويت</button>
+        </div>
+      
+          <!-- اللاعب 47 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 47">
+            <h2>البراء ظافر</h2>
+            <p class="percentage" id="percentage-player47">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player47"></div>
+            </div>
+            <button onclick="vote('player47')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 48 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 48">
+            <h2>محمد خالد</h2>
+            <p class="percentage" id="percentage-player48">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player48"></div>
+            </div>
+            <button onclick="vote('player48')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 49 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 49">
+            <h2>معاذ عبد الهادي</h2>
+            <p class="percentage" id="percentage-player49">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player49"></div>
+            </div>
+            <button onclick="vote('player49')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 50 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 50">
+            <h2>شاكر ظافر</h2>
+            <p class="percentage" id="percentage-player50">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player50"></div>
+            </div>
+            <button onclick="vote('player50')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 51 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 51">
+            <h2>انس الرشيد</h2>
+            <p class="percentage" id="percentage-player51">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player51"></div>
+            </div>
+            <button onclick="vote('player51')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 52 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 52">
+            <h2>محمد عبد الرحمن</h2>
+            <p class="percentage" id="percentage-player52">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player52"></div>
+            </div>
+            <button onclick="vote('player52')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 53 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 53">
+            <h2>مشعل ناصر</h2>
+            <p class="percentage" id="percentage-player53">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player53"></div>
+            </div>
+            <button onclick="vote('player53')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 54 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 54">
+            <h2>وليد محمد</h2>
+            <p class="percentage" id="percentage-player54">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player54"></div>
+            </div>
+            <button onclick="vote('player54')">تصويت</button>
+          </div>
+        
+          <!-- اللاعب 55 -->
+          <div class="player" data-class="ثاني" data-section="3">
+            <img src="ثاني 3.png" alt="لاعب 55">
+            <h2>نواف حسين</h2>
+            <p class="percentage" id="percentage-player55">0%</p>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-player55"></div>
+            </div>
+            <button onclick="vote('player55')">تصويت</button>
+          </div>
+        
+      
+            <!-- اللاعب 56 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 56">
+              <h2>يزن مشبب</h2>
+              <p class="percentage" id="percentage-player56">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player56"></div>
+              </div>
+              <button onclick="vote('player56')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 57 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 57">
+              <h2>هيثم ماجد</h2>
+              <p class="percentage" id="percentage-player57">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player57"></div>
+              </div>
+              <button onclick="vote('player57')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 58 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 58">
+              <h2>سيف غرمان</h2>
+              <p class="percentage" id="percentage-player58">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player58"></div>
+              </div>
+              <button onclick="vote('player58')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 59 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 59">
+              <h2>نواف ظافر</h2>
+              <p class="percentage" id="percentage-player59">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player59"></div>
+              </div>
+              <button onclick="vote('player59')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 60 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 60">
+              <h2>تركي ناصر</h2>
+              <p class="percentage" id="percentage-player60">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player60"></div>
+              </div>
+              <button onclick="vote('player60')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 61 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 61">
+              <h2>عبدالله فهد</h2>
+              <p class="percentage" id="percentage-player61">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player61"></div>
+              </div>
+              <button onclick="vote('player61')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 62 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 62">
+              <h2>عبدالله عبدالرحمن</h2>
+              <p class="percentage" id="percentage-player62">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player62"></div>
+              </div>
+              <button onclick="vote('player62')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 63 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 63">
+              <h2>علي الزهراني</h2>
+              <p class="percentage" id="percentage-player63">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player63"></div>
+              </div>
+              <button onclick="vote('player63')">تصويت</button>
+            </div>
+          
+            <!-- اللاعب 64 -->
+            <div class="player" data-class="ثاني" data-section="4">
+              <img src="ثاني 4.png" alt="لاعب 64">
+              <h2>محمد مسبل</h2>
+              <p class="percentage" id="percentage-player64">0%</p>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-player64"></div>
+              </div>
+              <button onclick="vote('player64')">تصويت</button>
+            </div>
+          
+           
+              <!-- اللاعب 65 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 65">
+                <h2>شعيب عصام</h2>
+                <p class="percentage" id="percentage-player65">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player65"></div>
+                </div>
+                <button onclick="vote('player65')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 66 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 66">
+                <h2>حسام ناصر</h2>
+                <p class="percentage" id="percentage-player66">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player66"></div>
+                </div>
+                <button onclick="vote('player66')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 67 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 67">
+                <h2>عبدالرحمن بدر</h2>
+                <p class="percentage" id="percentage-player67">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player67"></div>
+                </div>
+                <button onclick="vote('player67')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 68 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 68">
+                <h2>أحمد مازن</h2>
+                <p class="percentage" id="percentage-player68">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player68"></div>
+                </div>
+                <button onclick="vote('player68')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 69 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 69">
+                <h2>بدر منصور سعد</h2>
+                <p class="percentage" id="percentage-player69">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player69"></div>
+                </div>
+                <button onclick="vote('player69')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 70 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 70">
+                <h2>سلمان فهد</h2>
+                <p class="percentage" id="percentage-player70">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player70"></div>
+                </div>
+                <button onclick="vote('player70')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 71 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 71">
+                <h2>فهد سعود</h2>
+                <p class="percentage" id="percentage-player71">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player71"></div>
+                </div>
+                <button onclick="vote('player71')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 72 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 72">
+                <h2>اسامة باسم</h2>
+                <p class="percentage" id="percentage-player72">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player72"></div>
+                </div>
+                <button onclick="vote('player72')">تصويت</button>
+              </div>
+            
+              <!-- اللاعب 73 -->
+              <div class="player" data-class="اولى" data-section="1">
+                <img src="اولى 1.png" alt="لاعب 73">
+                <h2>عمر عبدالرحمن</h2>
+                <p class="percentage" id="percentage-player73">0%</p>
+                <div class="progress-bar-container">
+                  <div class="progress-bar" id="progress-player73"></div>
+                </div>
+                <button onclick="vote('player73')">تصويت</button>
+              </div>
+     
+         
+             
+                <!-- اللاعب 74 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 74">
+                  <h2>زياد عوض الكلثمي</h2>
+                  <p class="percentage" id="percentage-player74">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player74"></div>
+                  </div>
+                  <button onclick="vote('player74')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 75 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 75">
+                  <h2>نواف فراج الكلثمي</h2>
+                  <p class="percentage" id="percentage-player75">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player75"></div>
+                  </div>
+                  <button onclick="vote('player75')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 76 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 76">
+                  <h2>عبدالله محمد عبدالله البكري</h2>
+                  <p class="percentage" id="percentage-player76">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player76"></div>
+                  </div>
+                  <button onclick="vote('player76')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 77 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 77">
+                  <h2>بسام عبدالرحمن البسامي</h2>
+                  <p class="percentage" id="percentage-player77">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player77"></div>
+                  </div>
+                  <button onclick="vote('player77')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 78 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 78">
+                  <h2>زياد علي محمود</h2>
+                  <p class="percentage" id="percentage-player78">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player78"></div>
+                  </div>
+                  <button onclick="vote('player78')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 79 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 79">
+                  <h2>علي زياد الحلو</h2>
+                  <p class="percentage" id="percentage-player79">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player79"></div>
+                  </div>
+                  <button onclick="vote('player79')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 80 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 80">
+                  <h2>مصعب صالح بوست</h2>
+                  <p class="percentage" id="percentage-player80">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player80"></div>
+                  </div>
+                  <button onclick="vote('player80')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 81 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 81">
+                  <h2>فراس فهد</h2>
+                  <p class="percentage" id="percentage-player81">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player81"></div>
+                  </div>
+                  <button onclick="vote('player81')">تصويت</button>
+                </div>
+              
+                <!-- اللاعب 82 -->
+                <div class="player" data-class="اولى" data-section="2">
+                  <img src="اولى 2.png" alt="لاعب 82">
+                  <h2>عبدالله أحمد زيد</h2>
+                  <p class="percentage" id="percentage-player82">0%</p>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-player82"></div>
+                  </div>
+                  <button onclick="vote('player82')">تصويت</button>
+                </div>
+              
+              <!-- اللاعب 83 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 83">
+    <h2>مازن عيد رمضان</h2>
+    <p class="percentage" id="percentage-player83">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player83"></div>
+    </div>
+    <button onclick="vote('player83')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 84 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 84">
+    <h2>عبد الله موسى الشمراني</h2>
+    <p class="percentage" id="percentage-player84">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player84"></div>
+    </div>
+    <button onclick="vote('player84')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 85 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 85">
+    <h2>علي عبد الباقي علي</h2>
+    <p class="percentage" id="percentage-player85">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player85"></div>
+    </div>
+    <button onclick="vote('player85')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 86 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 86">
+    <h2>وليد علي ظافر</h2>
+    <p class="percentage" id="percentage-player86">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player86"></div>
+    </div>
+    <button onclick="vote('player86')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 87 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 87">
+    <h2>إسماعيل نبيل</h2>
+    <p class="percentage" id="percentage-player87">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player87"></div>
+    </div>
+    <button onclick="vote('player87')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 88 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 88">
+    <h2>محمد اوهيب سليمان</h2>
+    <p class="percentage" id="percentage-player88">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player88"></div>
+    </div>
+    <button onclick="vote('player88')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 89 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 89">
+    <h2>أحمد قصي حسن</h2>
+    <p class="percentage" id="percentage-player89">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player89"></div>
+    </div>
+    <button onclick="vote('player89')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 90 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 90">
+    <h2>بتال فايز البكري</h2>
+    <p class="percentage" id="percentage-player90">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player90"></div>
+    </div>
+    <button onclick="vote('player90')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 91 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 91">
+    <h2>بندر محمد ظافر البكري</h2>
+    <p class="percentage" id="percentage-player91">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player91"></div>
+    </div>
+    <button onclick="vote('player91')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 92 -->
+  <div class="player" data-class="اولى" data-section="3">
+    <img src="اولى 3.png" alt="لاعب 92">
+    <h2>عمر إسماعيل محمد</h2>
+    <p class="percentage" id="percentage-player92">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player92"></div>
+    </div>
+    <button onclick="vote('player92')">تصويت</button>
+  </div>
+
+   <!-- اللاعب 93 -->
+   <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 93">
+    <h2>فيصل زاهر</h2>
+    <p class="percentage" id="percentage-player93">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player93"></div>
+    </div>
+    <button onclick="vote('player93')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 94 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 94">
+    <h2>يزيد عبدالله</h2>
+    <p class="percentage" id="percentage-player94">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player94"></div>
+    </div>
+    <button onclick="vote('player94')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 95 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 95">
+    <h2>عمر خالد</h2>
+    <p class="percentage" id="percentage-player95">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player95"></div>
+    </div>
+    <button onclick="vote('player95')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 96 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 96">
+    <h2>محمد خالد</h2>
+    <p class="percentage" id="percentage-player96">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player96"></div>
+    </div>
+    <button onclick="vote('player96')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 97 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 97">
+    <h2>فيصل عبد الله</h2>
+    <p class="percentage" id="percentage-player97">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player97"></div>
+    </div>
+    <button onclick="vote('player97')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 98 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 98">
+    <h2>بندر البكري</h2>
+    <p class="percentage" id="percentage-player98">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player98"></div>
+    </div>
+    <button onclick="vote('player98')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 99 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 99">
+    <h2>عمر محمود</h2>
+    <p class="percentage" id="percentage-player99">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player99"></div>
+    </div>
+    <button onclick="vote('player99')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 100 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 100">
+    <h2>اسامة عبدالله</h2>
+    <p class="percentage" id="percentage-player100">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player100"></div>
+    </div>
+    <button onclick="vote('player100')">تصويت</button>
+  </div>
+
+  <!-- اللاعب 101 -->
+  <div class="player" data-class="اولى" data-section="4">
+    <img src="اولى 4.png" alt="لاعب 101">
+    <h2>وائل مشبب</h2>
+    <p class="percentage" id="percentage-player101">0%</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-player101"></div>
+    </div>
+    <button onclick="vote('player101')">تصويت</button>
+  </div>
+</main>
+ 
+              
+                
+      <!-- الزر العائم -->
+<div id="floating-button" onclick="openEventPopup()">
+  <i class="fas fa-cogs"></i>
+</div>
+
+<!-- الصفحة المنبثقة -->
+<div id="event-management-popup" class="alert-overlay" style="display: none;">
+  <div class="alert-box">
+    <div class="logos">
+      <img src="1Anton.png" alt="Logo 1" class="logo">
+      <img src="لور7.png" alt="Logo 2" class="logo">
+      <img src="لوور.png" alt="Logo 3" class="logo">
+    </div>
+
+    <h3>أدارة وتطوير</h3>
+    <div class="developers">
+      <div class="developer-box">
+        <p>شادي رفيق</p>
+      </div>
+      <div class="developer-box">
+        <p>علي فهد</p>
+      </div>
+      <div class="developer-box">
+        <p>محمد زياد</p>
+      </div>
+      <div class="developer-box">
+        <p>يزن علي</p>
+      </div>
+    </div>
+    
+    <h3>أدارة المعلمين</h3>
+    <div class="developers">
+      <div class="developer-box">
+        <p>الاستاذ: غرم المقر</p>
+      </div>
+      <div class="developer-box">
+        <p>الاستاذ: ظافر شاكر</p>
+      </div>
+    </div>
+    <!-- قسم الأسئلة الشائعة -->
+    <div class="faq">
+      <h3>أسئلة شائعة وتعليمات</h3>
+      <ul>
+        <li>
+          <div class="faq-question" onclick="toggleAnswer(this)">
+            <span>لماذا نسبة التصويت تقل؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <p class="faq-answer" style="display: none;">نسبة التصويت قد تقل بسبب تصويت الأعضاء الجدد للاعبين آخرين بشكل متزايد، مما يؤدي إلى تقليل الأصوات التي يحصل عليها اللاعب المفضل. الأعضاء الجدد قد يكونون أكثر عرضة لتجربة التصويت للاعبين آخرين، مما يؤثر في التوزيع العام للأصوات ويقلل من نسبة التصويت للاعبين الذين كانوا يتصدرون في بداية الفعالية.</p>
+        </li>
+        <li>
+          <div class="faq-question" onclick="toggleAnswer(this)">
+            <span>متى ستنتهي الفعالية؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <p class="faq-answer" style="display: none;">22\1\2025</p>
+        </li>
+        <li>
+          <div class="faq-question" onclick="toggleAnswer(this)">
+            <span>من يمكنة المشاركة والتصويت؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <p class="faq-answer" style="display: none;">يستطيع جميع من يرغب بالتصويت ان يصوت. صوت واحد مسموح لكل مستخدم</p>
+        </li>
+        <li>
+          <div class="faq-question" onclick="toggleAnswer(this)">
+            <span>هل نسبة الاصوات تقل ام ترتفع عند وجود مستخدمين جدد؟</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <p class="faq-answer" style="display: none;">زيادة في الأصوات: في حال تصويت الأعضاء الجدد للاعبين مختلفين، قد ترتفع نسبة الأصوات بشكل عام نظرًا لزيادة عدد المشاركين الجدد.
+            توزيع الأصوات: قد يحدث توازن في توزيع الأصوات بين اللاعبين، حيث يقوم الأعضاء الجدد بالتصويت للاعبين آخرين، مما يقلل من النسبة المئوية للاعبين المتصدرين.
+            انخفاض الأصوات للاعب معين: إذا كان الأعضاء الجدد يصوتون بكثافة لصالح لاعبين آخرين، فقد تنخفض نسبة التصويت للاعبين الذين كانوا يتصدرون في البداية.</p>
+        </li>
+      </ul>
+      <button onclick="closeEventPopup()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- كود JavaScript -->
+<script>
+  function openEventPopup() {
+    document.getElementById('event-management-popup').style.display = 'flex';
+  }
+
+  function closeEventPopup() {
+    document.getElementById('event-management-popup').style.display = 'none';
+  }
+
+  function toggleAnswer(element) {
+    const answer = element.nextElementSibling;
+    const icon = element.querySelector('.fas');
+    if (answer.style.display === 'none') {
+      answer.style.display = 'block';
+      icon.classList.remove('fa-chevron-down');
+      icon.classList.add('fa-chevron-up');
+    } else {
+      answer.style.display = 'none';
+      icon.classList.remove('fa-chevron-up');
+      icon.classList.add('fa-chevron-down');
+    }
+  }
+</script>
+
+
+          
+        
+      
+    
+<div id="custom-alert" class="alert-overlay" style="display: none;">
+  <div class="alert-box">
+    <p id="alert-message"></p>
+    <button onclick="closeAlert()">حسنًا</button>
+  </div>
+</div>
+
+
+
+
+
+<script type="module">
+  // استيراد مكتبات Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+  import { getDatabase, ref, set, get, onValue, update } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+  // تهيئة تطبيق Firebase باستخدام الإعدادات الخاصة به
+  const firebaseConfig = {
+    apiKey: "AIzaSyA6j7EJGxC1PIvvBZWI4iGUL6bUlsExIAE",
+    authDomain: "srlor-64eed.firebaseapp.com",
+    databaseURL: "https://srlor-64eed-default-rtdb.firebaseio.com",
+    projectId: "srlor-64eed",
+    storageBucket: "srlor-64eed.appspot.com",
+    messagingSenderId: "349533508082",
+    appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
+  };
+
+  // تهيئة التطبيق وقاعدة البيانات
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  // المرجع إلى جدول التصويت في قاعدة البيانات
+  const votesRef = ref(database, 'votes');
+
+  // تخزين القيم الافتراضية للأصوات
+  let votes = {};
+  for (let i = 1; i <= 101; i++) {
+    votes[`player${i}`] = 0;
+  }
+
+  // جلب القيم الحالية من قاعدة البيانات وتحديث الواجهة
+  onValue(votesRef, (snapshot) => {
+    votes = snapshot.val() || votes;
+    updatePercentages();
+  });
+
+  // المتغير لتتبع إجمالي الأصوات
+  let totalVotes = 0;
+
+  // وظيفة التصويت المعدلة
+  window.vote = function(playerId) {
+    // التحقق من أن المستخدم لم يصوت مسبقًا باستخدام Local Storage
+    if (localStorage.getItem('hasVoted')) {
+      showAlert('لقد قمت بالتصويت بالفعل!');
+      return;
+    }
+
+    // جلب القيم الحالية من قاعدة البيانات
+    get(votesRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        votes = snapshot.val();
+      }
+
+      // تحديث عدد الأصوات للاعب المحدد
+      votes[playerId] = (votes[playerId] || 0) + 1;
+
+      // تحديث قاعدة البيانات بالقيم الجديدة
+      update(ref(database, 'votes'), votes).then(() => {
+        // تخزين أن المستخدم قد قام بالتصويت
+        localStorage.setItem('hasVoted', 'true');
+        showAlert('تم تسجيل صوتك بنجاح!');
+      }).catch((error) => {
+        console.error('خطأ في تحديث البيانات:', error);
+      });
+    }).catch((error) => {
+      console.error('خطأ في جلب البيانات:', error);
+      showAlert('حدث خطأ أثناء التصويت. الرجاء المحاولة مرة أخرى.');
+    });
+  };
+
+  // تحديث نسب الأصوات في الواجهة
+  function updatePercentages() {
+    totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
+
+    for (const playerId in votes) {
+      // حساب النسبة المئوية لكل لاعب
+      const percentage = totalVotes > 0 ? ((votes[playerId] / totalVotes) * 100).toFixed(1) : 0;
+
+      // تحديث النص وشريط التقدم لكل لاعب
+      const percentageElement = document.getElementById(`percentage-${playerId}`);
+      const progressBarElement = document.getElementById(`progress-${playerId}`);
+
+      if (percentageElement && progressBarElement) {
+        percentageElement.textContent = `${percentage}%`;
+        progressBarElement.style.width = `${percentage}%`;
+      }
+    }
+  }
+
+  // وظيفة تصفية اللاعبين بناءً على الصف والشعبة
+  window.filterPlayers = function() {
+    const classFilter = document.getElementById('class-filter').value;
+    const sectionFilter = document.getElementById('section-filter').value;
+    const players = document.querySelectorAll('.player');
+
+    players.forEach(player => {
+      const playerClass = player.getAttribute('data-class');
+      const playerSection = player.getAttribute('data-section');
+
+      // عرض أو إخفاء اللاعبين بناءً على التصفية المحددة
+      if ((classFilter === 'all' || classFilter === playerClass) &&
+          (sectionFilter === 'all' || sectionFilter === playerSection)) {
+        player.style.display = '';
+      } else {
+        player.style.display = 'none';
+      }
+    });
+  };
+
+  // وظيفة لإظهار التحذيرات في نافذة منبثقة
+  function showAlert(message) {
+    const alertOverlay = document.getElementById('custom-alert');
+    const alertMessage = document.getElementById('alert-message');
+
+    alertMessage.textContent = message;
+    alertOverlay.style.display = 'flex';
+  }
+
+// وظيفة لإغلاق النافذة المنبثقة
+window.closeAlert = function() {
+  document.getElementById('custom-alert').style.display = 'none';
+};
+
+</script>
+
+</body>
+</html>

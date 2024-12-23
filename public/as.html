@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افتتاح القسم</title>
+    <style>
+        /* إعدادات عامة */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(45deg, #00ff2a, #0091d5, #004D40, #009688);
+            background-size: 400% 400%;
+            animation: gradientBackground 12s ease infinite;
+        }
+
+        /* حركة الخلفية */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* تصميم الحاوية */
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            animation: fadeInScale 1s ease-out forwards;
+            transform: scale(0.9);
+        }
+
+        /* تأثير الحركة على ظهور الحاوية */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* تصميم النص الرئيسي */
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            animation: titleAnimation 1.5s ease-out;
+        }
+
+        /* تأثير الحركة على النص الرئيسي */
+        @keyframes titleAnimation {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تصميم التاريخ */
+        .date {
+            font-size: 2rem;
+            color: #FFD700;
+            animation: dateAnimation 1.5s ease-out;
+        }
+
+        /* تأثير الحركة على التاريخ */
+        @keyframes dateAnimation {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تحسين التباين على الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            body {
+                background: linear-gradient(45deg, #00ff2a, #0091d5, #004D40, #009688);
+                background-size: 400% 400%;
+                animation: gradientBackground 12s ease infinite;
+            }
+
+            .container {
+                padding: 20px 30px;
+                width: 90%;
+            }
+            .title {
+                font-size: 2rem;
+            }
+            .date {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">سيتم افتتاح القسم بعد جمع الإحصائيات المطلوبة</h1>
+        <p class="date">1/12/2024</p>
+    </div>
+</body>
+</html>

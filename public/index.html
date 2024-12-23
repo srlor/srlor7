@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR LOR</title>
+    <!-- رابط ملف CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- رابط مكتبة أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+  
+    <header class="top-bar">
+        
+
+        <div class="logo">
+            <img src="1Anton.png" alt="شعار" class="logo-img">
+        </div>
+    </a>
+    <a href="تصويت.html" class="project-members" data-tooltip="المشاركين بالمشروع">
+        <i class="fas fa-poll"></i>
+    </a>
+    <button id="theme-toggle" class="theme-toggle" data-tooltip="الوضع الغامق">
+        <i class="fas fa-moon"></i>
+    </button>
+        </div>
+    </header>
+    
+    <!-- قسم رأس الموقع -->
+    <header>
+        <video class="header-video" autoplay loop muted playsinline>
+            <source src="rrff.mp4" type="video/mp4">
+            <source src="video.webm" type="video/webm">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+    </header>
+    
+    <style>
+        /* تنسيق الفيديو */
+        .header-video {
+            width: 90%;                /* عرض الفيديو الأساسي (90% من الشاشة) */
+            max-width: 1200px;         /* أقصى عرض للفيديو */
+            height: auto;              /* الحفاظ على النسبة بين العرض والارتفاع */
+            border: 5px solid #17b331; /* إطار مرئي */
+            border-radius: 15px;       /* زوايا مستديرة */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* ظل للإطار */
+            margin: 10px auto;         /* توسيط الفيديو داخل الشاشة */
+            display: block;            /* تصنيف العنصر ككتلة */
+            object-fit: contain;       /* ضمان عدم خروج المحتوى */
+            transition: transform 0.3s ease; /* تأثير الحركة */
+        }
+    
+        /* التأثير عند تمرير الفأرة على الأجهزة المكتبية */
+        .header-video:hover {
+            transform: scale(1.02);    /* تكبير بسيط عند التمرير */
+        }
+    
+        /* التأثير عند الضغط على الأجهزة المحمولة */
+        .header-video:active {
+            transform: scale(1.02);    /* تكبير بسيط عند الضغط */
+        }
+    
+        /* الفيديو على الشاشات الكبيرة */
+        @media (min-width: 1024px) {
+            .header-video {
+                width: 80%;            /* عرض أكبر للفيديو على الشاشات الكبيرة */
+            }
+        }
+    
+        /* الفيديو على الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .header-video {
+                width: 95%;            /* تغطية 95% من الشاشة للشاشات الصغيرة */
+                border-width: 3px;     /* تقليل عرض الإطار */
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* تقليل الظل */
+            }
+        }
+    
+        /* التأثيرات الخاصة بضغط الشاشات اللمسية (للأجهزة المحمولة) */
+        .header-video:active,
+        .header-video:focus {
+            transform: scale(1.02); /* تكبير عند التفاعل مع الفيديو */
+        }
+    </style>
+    
+    <!-- مستطيل الأزرار -->
+    <div class="button-container">
+        <a href="جدول.html" class="button">
+            <i class="fas fa-futbol"></i> المباريات
+        </a>
+        <a href="team.html" class="button">
+            <i class="fas fa-users"></i> الفرق
+        </a>
+    </a>
+    <a href="تصويت.html" class="button">
+        <i class="fas fa-poll"></i> افضل لاعب
+    </a>
+    </div>
+    
+    
+    <h2 class="title">شروط وقوانين الدوري</h2>
+
+    <div class="dropdown" >
+        <button class="dropbtn">القوانين | خصم نقطة من الفريق</button>
+        <div class="dropdown-content">
+            <div class="law-box">
+                <img src="5555.png" alt="قانون 1" class="law-image">
+                <p class="law-text">يمنع التغيب عن الحصص الدراسية أو التأخر بحجة المشاركة في الدوري.</p>
+            </div>
+            <div class="law-box">
+                <img src="666.png" alt="قانون 2" class="law-image">
+                <p class="law-text">في حال عدم مشاركة لاعبي الاحتياط في المباراة، يجب عليهم العودة فور انتهاء المباراة. كما يمنع تبديل لاعب الاحتياط أثناء المباراة إلا في حال حدوث إصابة (لا قدر الله) أو غياب غير متوقع من لاعب أساسي.</p>
+            </div>
+            <div class="law-box">
+                <img src="009.png" alt="قانون 3" class="law-image">
+                <p class="law-text">يمنع تغيير اللاعبين أو مشاركة لاعبين جدد غير مسجلين إلا بتغيير رسمي بين لاعبين، ويجب التواصل مع إدارة الدوري لإجراء التبديل.</p>
+            </div>
+            <div class="law-box">
+                <img src="777.png" alt="قانون 4" class="law-image">
+                <p class="law-text">تأخر الفريق او نصف الفريق عن الحصة بعد انتهاء فتره الاستراحة</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">الشروط العامة للحضور والمشاركة في المباريات</button>
+        <div class="dropdown-content">
+            <div class="law-box">
+                <img src="109.png" alt="قانون 1" class="law-image">
+                <p class="law-text">يُسمح لكل فريق بطلب تأجيل مباراة لمرة واحدة فقط في حال وجود اختبار أو ظرف أكاديمي طارئ، على أن يتم إعلام إدارة الدوري مسبقًا قبل الاعلان عن المباراة.</p>
+            </div>
+            <div class="law-box">
+                <img src="123.png" alt="قانون 2" class="law-image">
+                <p class="law-text">يمنع الغياب أثناء موعد المباراة. في حال وجود غيابات كثيرة في فريقك وكان لدى الفريق الخصم 7 لاعبين أساسيين على الأقل، سيتم احتساب الفوز للفريق الخصم.</p>
+            </div>
+            <div class="law-box">
+                <img src="454.png" alt="قانون 3" class="law-image">
+                <p class="law-text">يستطيع اللاعب الاحتياطي اللعب كلاعب أساسي بشرط أن يكون ضمن التشكيلة قبل الاعلان عن المباراة. </p>
+            </div>
+            <div class="law-box">
+                <img src="456.png" alt="قانون 4" class="law-image">
+                <p class="law-text">يُمنع تسجيل لاعب لديه غيابات متكررة ضمن الفريق.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown" style="padding-bottom: 80px;">
+        <button class="dropbtn">القوانين | إيقاف اللاعب عن لعب المباراة</button>
+        <div class="dropdown-content">
+            <div class="law-box">
+                <img src="463.png" alt="قانون 1" class="law-image">
+                <p class="law-text">التأخر عن الحصة بعد انتهاء المباراة وانتهاء فترة الراحة المحددة</p>
+            </div>
+            <div class="law-box">
+                <img src="534.png" alt="قانون 2" class="law-image">
+                <p class="law-text">مغادرة الحصة قبل الفسحة بحجة المباراة دون استدعاء رسمي من أداره الدوري.</p>
+            </div>
+            <div class="law-box">
+                <img src="446.png" alt="قانون 3" class="law-image">
+                <p class="law-text">الغياب المتكرر بعد الحصول على مركز أساسي في الفريق</p>
+            </div>
+            <div class="law-box">
+                <img src="654.png" alt="قانون 4" class="law-image">
+                <p class="law-text">الملابس الرياضية: يمنع اللعب إلا بارتداء الملابس الرياضية.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="popup">
+        <div id="popup-content">
+            <button id="close-btn" aria-label="إغلاق">×</button>
+            <video id="popup-video" autoplay muted playsinline>
+                <source src="rr.mp4" type="video/mp4">
+                <!-- استبدل "video.mp4" برابط الفيديو الخاص بك -->
+                متصفحك لا يدعم عرض الفيديو.
+            </video>
+        </div>
+    </div>
+    
+  
+
+
+    <script src="script.js"></script> <!-- ربط ملف JavaScript -->
+</body>
+</html>

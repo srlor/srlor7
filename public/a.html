@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقات تعريف</title>
+    <!-- إضافة مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-x: hidden; /* منع التمرير الأفقي */
+            background: linear-gradient(45deg, #25D366, #128C7E, #075E54, #34B7F1);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* دوائر متحركة للخلفية */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: moveCircles 10s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes moveCircles {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(100vw) translateY(100vh); }
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            animation-duration: 12s;
+            animation-delay: 1s;
+            top: 20%;
+            left: -150px;
+        }
+
+        .circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            animation-duration: 15s;
+            animation-delay: 2s;
+            top: 50%;
+            left: -250px;
+        }
+
+        .circle:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            animation-duration: 18s;
+            animation-delay: 4s;
+            top: 80%;
+            left: -200px;
+        }
+
+        .circle:nth-child(4) {
+            width: 600px;
+            height: 600px;
+            animation-duration: 20s;
+            animation-delay: 3s;
+            top: 10%;
+            left: -300px;
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 320px;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            font-size: 18px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* إضافة تأثيرات دخول للبطاقات المتتالية */
+        .profile-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .profile-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .profile-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px) scale(1.05) rotate(5deg);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .profile-card h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .profile-card p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* إضافة شريط أخضر على اليسار */
+        .profile-card.left-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background-color: #25D366;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        /* إضافة شريط أخضر على اليمين */
+        .profile-card.right-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 100%;
+            background-color: #25D366;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .whatsapp-icon-wrapper {
+            display: inline-block;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .whatsapp-icon-wrapper:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-icon {
+            font-size: 36px;
+            color: white;
+        }
+
+        /* استجابة للأجهزة الصغيرة */
+        @media (max-width: 600px) {
+            body {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .profile-card {
+                max-width: 100%;
+                margin: 10px;
+                padding: 15px;
+            }
+            .profile-card h2 {
+                font-size: 24px;
+            }
+            .profile-card p {
+                font-size: 16px;
+            }
+            .whatsapp-icon-wrapper {
+                padding: 15px;
+            }
+            .whatsapp-icon {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- دوائر متحركة -->
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<!-- البطاقة الأولى (شريط أخضر على اليسار) -->
+<div class="profile-card left-bar">
+    <h2>شادي رفيق</h2>
+    <p>مطور الموقع</p>
+    <a href="https://wa.me/1234567890" class="whatsapp-icon-wrapper" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
+</div>
+
+<!-- البطاقة الثانية (شريط أخضر على اليمين) -->
+<div class="profile-card right-bar">
+    <h2>محمد زياد</h2>
+    <p>مسؤول مجتمع الواتساب</p>
+    <a href="https://wa.me/0987654321" class="whatsapp-icon-wrapper" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
+</div>
+
+<!-- البطاقة الثالثة (شريط أخضر على اليسار) -->
+<div class="profile-card left-bar">
+    <h2>علي فهد</h2>
+    <p>مسؤول الاحصائيات</p>
+    <a href="https://wa.me/1122334455" class="whatsapp-icon-wrapper" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
+</div>
+
+<!-- البطاقة الرابعة (شريط أخضر على اليمين) -->
+<div class="profile-card right-bar">
+    <h2>يزن علي</h2>
+    <p>مسؤول الاحصائيات</p>
+    <a href="https://wa.me/2233445566" class="whatsapp-icon-wrapper" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    </a>
+</div>
+
+</body>
+</html>

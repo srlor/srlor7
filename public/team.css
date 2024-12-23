@@ -1,0 +1,298 @@
+:root {
+    --background-light: #f3f7f0;
+    --background-dark: #121212;
+    --text-light: #2c6e49;
+    --text-dark: #b0b0b0;
+    --card-light: #ffffff;
+    --card-dark: #1e1e1e;
+    --border-light: #2c6e49;
+    --border-dark: #4caf50;
+    --button-light: #2c6e49;
+    --button-dark: #4caf50;
+    --background-color: #f9f9f9;
+    --text-color: #333333;
+    --navbar-color: #ffffff;
+    --icon-color: #32CD32;
+}
+
+/* تحديث لون النص في الوضع الليلي */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode h1,
+body.dark-mode .team-name {
+    color: #ffffff;
+}
+
+/* تحسين لون بطاقة الفريق في الوضع الليلي */
+body.dark-mode .team-card {
+    background: var(--card-dark);
+    border-right: 5px solid var(--border-dark);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* تنسيق الإحصائيات في الوضع الليلي */
+body.dark-mode .team-stats {
+    color: #aaaaaa;
+}
+
+body.dark-mode .team-stats.points { color: #4caf50; }
+body.dark-mode .team-stats.wins { color: #81c784; }
+body.dark-mode .team-stats.draws { color: #ffd54f; }
+body.dark-mode .team-stats.losses { color: #e57373; }
+body.dark-mode .team-stats.goals { color: #64b5f6; }
+
+/* تحسين زر المزيد في الوضع الليلي */
+body.dark-mode .more-button {
+    background-color: var(--button-dark);
+    color: #ffffff;
+}
+
+.more-button:hover {
+    background-color: #388e3c;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* إعدادات أساسية */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    direction: rtl;
+    overflow-x: hidden; /* منع الالتفاف الأفقي */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    margin: 20px;
+    color: var(--text-light);
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* الوضع الليلي */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode h1 {
+    color: var(--text-dark);
+}
+
+/* تنسيق الحاوية الرئيسية */
+.team-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* تنسيق بطاقة الفريق */
+.team-card {
+    background: var(--card-light);
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    border-right: 5px solid var(--border-light);
+    min-height: 320px;
+}
+
+body.dark-mode .team-card {
+    background: var(--card-dark);
+    border-right: 5px solid var(--border-dark);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* تنسيق الترتيب */
+.rank {
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    background-color: var(--border-light);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 3px solid var(--background-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+body.dark-mode .rank {
+    background-color: var(--border-dark);
+    border: 3px solid var(--background-dark);
+}
+
+/* تنسيق الشعار واسم الفريق */
+.team-logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--border-light);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .team-logo {
+    border-color: var(--border-dark);
+}
+
+.team-name {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 12px 0;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+body.dark-mode .team-name {
+    color: var(--text-dark);
+}
+
+/* تحسين عرض بيانات الفريق */
+.team-stats {
+    font-size: 1.1em;
+    color: #555;
+    padding: 8px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.dark-mode .team-stats {
+    color: #bbb;
+}
+
+/* تخصيص ألوان لكل إحصائية */
+.team-stats.points { color: var(--border-light); }
+.team-stats.wins { color: #4caf50; }
+.team-stats.draws { color: #ffc107; }
+.team-stats.losses { color: #f44336; }
+.team-stats.goals { color: #2196f3; }
+
+body.dark-mode .team-stats.points { color: var(--border-dark); }
+
+/* تنسيق الأيقونات */
+.team-stats i {
+    margin-left: 5px;
+    font-size: 1.2em;
+    color: inherit;
+}
+
+/* تنسيق زر المزيد */
+.more-button {
+    margin-top: 15px;
+    padding: 12px 24px;
+    background-color: var(--button-light);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+body.dark-mode .more-button {
+    background-color: var(--button-dark);
+}
+
+.more-button:hover {
+    background-color: #22653e;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* تحسين استجابة التصميم للهواتف المحمولة */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .team-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .team-card {
+        max-width: 280px;
+        width: 95%;
+        padding: 20px 15px;
+    }
+
+    .more-button {
+        padding: 8px 18px;
+        font-size: 0.9em;
+    }
+}
+
+/* تصميم الشريط العلوي */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 350px; /* تعديل العرض ليصبح أصغر على الجوالات */
+    padding: 8px 12px;
+    background-color: var(--navbar-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden; /* منع الالتفاف */
+}
+
+/* تصميم الأيقونة */
+.icon i {
+    font-size: 1.4em;
+    color: var(--icon-color);
+}
+
+/* العنوان في المنتصف */
+.title {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* إعدادات استجابة الشريط العلوي للجوالات */
+@media (max-width: 600px) {
+    .navbar {
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .title {
+        font-size: 1.1em;
+    }
+}
