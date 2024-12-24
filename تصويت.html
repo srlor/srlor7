@@ -243,7 +243,7 @@
   <!-- اللاعب 18 -->
   <div class="player" data-class="ثالث" data-section="2">
     <img src="ثالث 2.png" alt="لاعب 18">
-    <h2>نادر الشهراني</h2>
+    <h2>نادر صالح الشمراني </h2>
     <p class="percentage" id="percentage-player18">0%</p>
     <div class="progress-bar-container">
       <div class="progress-bar" id="progress-player18"></div>
@@ -1285,13 +1285,49 @@
 <div id="custom-alert" class="alert-overlay" style="display: none;">
   <div class="alert-box">
     <p id="alert-message"></p>
-    <button onclick="closeAlert()">حسنًا</button>
+    <button id="close-alert-button">حسنًا</button>
   </div>
 </div>
 
+<style>
+  .alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
 
+  .alert-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+  }
 
+  .alert-box button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
 
+  .alert-box button:hover {
+    background-color: #45a049;
+  }
+</style>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -1318,7 +1354,7 @@
       userId = userCredential.user.uid;
     })
     .catch((error) => {
-      console.error('خطأ في تسجيل الدخول المجهول:', error);
+      showAlert('خطأ في تسجيل الدخول المجهول: ' + error.message);
     });
 
   const votesRef = ref(database, 'votes');
@@ -1352,6 +1388,7 @@
       .slice(0, 3);
 
     const topPlayersContainer = document.getElementById('top-players');
+    if (!topPlayersContainer) return;
     topPlayersContainer.innerHTML = '';
 
     sortedPlayers.forEach(([playerId, votes]) => {
@@ -1370,13 +1407,13 @@
 
   window.vote = function(playerId) {
     if (!userId) {
-      alert('حدث خطأ. الرجاء إعادة المحاولة لاحقًا.');
+      showAlert('حدث خطأ. الرجاء إعادة المحاولة لاحقًا.');
       return;
     }
 
     get(ref(database, `userVotes/${userId}`)).then((snapshot) => {
       if (snapshot.exists()) {
-        alert('لقد قمت بالتصويت بالفعل!');
+        showAlert('لقد قمت بالتصويت بالفعل!');
         return;
       }
 
@@ -1389,18 +1426,29 @@
 
       update(ref(database), updates)
         .then(() => {
-          alert('تم تسجيل صوتك بنجاح!');
+          showAlert('تم تسجيل صوتك بنجاح!');
         })
         .catch((error) => {
-          console.error('خطأ في تحديث البيانات:', error);
+          showAlert('خطأ في تحديث البيانات: ' + error.message);
         });
     }).catch((error) => {
-      console.error('خطأ في جلب البيانات:', error);
-      alert('حدث خطأ أثناء التصويت. الرجاء المحاولة مرة أخرى.');
+      showAlert('خطأ في جلب البيانات: ' + error.message);
     });
   };
-</script>
 
+  function showAlert(message) {
+    const alertBox = document.getElementById('custom-alert');
+    const alertMessage = document.getElementById('alert-message');
+
+    if (alertMessage) alertMessage.textContent = message;
+    if (alertBox) alertBox.style.display = 'flex';
+  }
+
+  document.getElementById('close-alert-button').addEventListener('click', () => {
+    const alertBox = document.getElementById('custom-alert');
+    if (alertBox) alertBox.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
