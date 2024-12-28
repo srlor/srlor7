@@ -53,22 +53,3 @@ function toggleDarkMode() {
     localStorage.setItem("theme", "light");
   }
 }
-
-const snowflakeCount = 100; // عدد الثلوج
-const snowflakeCharacters = ['❄', '❅', '❆']; // أشكال الثلوج
-const snowContainer = document.getElementById('snow-container');
-
-// إنشاء الثلوج
-for (let i = 0; i < snowflakeCount; i++) {
-  const snowflake = document.createElement('div');
-  snowflake.className = 'snowflake';
-  snowflake.textContent = snowflakeCharacters[Math.floor(Math.random() * snowflakeCharacters.length)];
-
-  // إعداد الموقع العشوائي وحجم الثلج
-  snowflake.style.left = Math.random() * 100 + 'vw';
-  snowflake.style.fontSize = Math.random() * 1.5 + 0.5 + 'rem';
-  snowflake.style.animationDuration = Math.random() * 5 + 5 + 's'; // مدة سقوط الثلوج
-  snowflake.style.animationDelay = Math.random() * 5 + 's'; // تأخير البداية
-
-  snowContainer.appendChild(snowflake);
-}
