@@ -440,14 +440,14 @@ body {
         rgba(0, 255, 170, 0.2),
         rgba(0, 255, 170, 0.2) 1px,
         transparent 1px,
-        transparent 20px
+        transparent 30px /* تكبير حجم المربعات */
     ),
     repeating-linear-gradient(
         90deg,
         rgba(0, 255, 170, 0.2),
         rgba(0, 255, 170, 0.2) 1px,
         transparent 1px,
-        transparent 20px
+        transparent 30px /* تكبير حجم المربعات */
     );
     animation: moveGrid 10s linear infinite; /* إعادة الحركة القطريّة */
     z-index: -1; /* خلف المحتوى */
@@ -476,7 +476,7 @@ body {
         background-position: 0 0;
     }
     100% {
-        background-position: 40px 40px; /* الحركة القطريّة */
+        background-position: 60px 60px; /* الحركة القطريّة */
     }
 }
 
@@ -503,3 +503,94 @@ main {
     position: relative; /* لضمان عدم تأثير الشبكة على المحتوى */
     z-index: 1; /* فوق الشبكة */
 }
+
+/* تنسيق أساسي للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    direction: rtl; /* الاتجاه من اليمين إلى اليسار */
+    position: relative;
+    overflow-y: auto; /* تمكين التمرير العمودي */
+    padding: 20px 0 0; /* مسافة من الأعلى */
+    overflow-x: hidden; /* منع التمرير الأفقي */
+  }
+  
+  /* تصميم الشبكة المتحركة */
+  .animated-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    );
+    animation: moveGrid 10s linear infinite; /* إعادة الحركة القطريّة */
+    z-index: -1; /* خلف المحتوى */
+    pointer-events: none; /* منع التفاعل مع الشبكة */
+  }
+  
+  /* إضافة نص خافت ولامع في الخلفية */
+  .animated-grid::before {
+    content: "SR LOR";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    color: rgba(0, 255, 170, 0.05); /* لون خافت للغاية */
+    font-weight: bold;
+    z-index: -1; /* خلف الشبكة */
+    pointer-events: none; /* منع التفاعل مع النص */
+    white-space: nowrap;
+    animation: blink 2s infinite; /* تأثير الوميض */
+  }
+  
+  /* حركة الشبكة */
+  @keyframes moveGrid {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px; /* الحركة القطريّة */
+    }
+  }
+  
+  /* تأثير الوميض للنص */
+  @keyframes blink {
+    0%, 100% {
+        color: rgba(0, 255, 170, 0.05);
+    }
+    50% {
+        color: rgba(0, 255, 170, 0.3); /* زيادة سطوع النص */
+    }
+  }
+  
+  /* تحسين العرض على الأجهزة الصغيرة */
+  @media (max-width: 768px) {
+    .animated-grid::before {
+        font-size: 5rem; /* تقليل حجم النص ليتناسب مع الهواتف */
+    }
+  }
+  
+  /* تنسيق المحتوى الرئيسي */
+  main {
+    padding: 1em;
+    position: relative; /* لضمان عدم تأثير الشبكة على المحتوى */
+    z-index: 1; /* فوق الشبكة */
+  }
+  

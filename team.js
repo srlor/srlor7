@@ -44,3 +44,9 @@ function toggleDarkMode() {
     }
 }
 
+window.addEventListener('load', () => {
+    const teamCards = document.querySelectorAll('.team-card');
+    teamCards.forEach(card => {
+        card.classList.add('visible');
+    });
+});

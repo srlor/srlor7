@@ -1,10 +1,10 @@
 /* تعريف الألوان الأساسية */
 :root {
-    --background-color: #1f2a3d; /* لون خلفية داكن هادئ */
+    
     --text-light: #e2e2e2; /* لون نص فاتح */
-    --card-light: linear-gradient(145deg, #3e4b6b, #2c3a5a); /* تدرج لوني هادئ للبطاقات */
-    --border-light: #8d9cb5; /* لون الحدود بلون رمادي دافئ */
-    --button-light: linear-gradient(90deg, #a8b5d1, #6f7f98); /* تدرج لوني دافئ للأزرار */
+    --card-light: linear-gradient(145deg, #030303, #43504a); /* تدرج لوني هادئ للبطاقات */
+    --border-light: #00ff40; /* لون الحدود بلون رمادي دافئ */
+    --button-light: linear-gradient(90deg, #17bb56, #00ff40); /* تدرج لوني دافئ للأزرار */
     --text-color: #d9d9d9; /* لون النص الأساسي */
     --navbar-color: #2a3b52; /* لون شريط التنقل */
     --icon-color: #b8c3d5; /* لون الأيقونات */
@@ -46,82 +46,160 @@ h1 {
 
 /* تنسيق بطاقة الفريق */
 .team-card {
-    background: var(--card-light);
+    background: linear-gradient(145deg, #333333, #4f8a8b); /* تدرج لوني من الأسود إلى الأخضر الفاتح */
     padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 20px; /* زاوية أكثر انحناءً */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.1); /* تأثير الظل */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease-out, background-color 0.5s ease-out;
     text-align: center;
-    border-right: 5px solid var(--border-light);
+    border-right: 5px solid #4f8a8b; /* استخدام نفس اللون الأخضر الفاتح */
     min-height: 320px;
+    opacity: 0; /* بدأ العنصر غير مرئي */
+    transform: translateY(20px); /* تحريك العنصر للأسفل عند الدخول */
 }
 
-/* تنسيق الترتيب */
+/* جعل البطاقة مرئية بعد تحميل الصفحة */
+.team-card.visible {
+    opacity: 1;
+    transform: translateY(0); /* التحرك للأعلى عند الظهور */
+}
+
+/* تأثير دخول للترتيب */
 .rank {
     position: absolute;
     top: -20px;
     right: 15px;
-    background-color: var(--border-light);
-    color: #ffffff;
-    width: 50px;
-    height: 50px;
+    background-color: #4f8a8b; /* خلفية باللون الأخضر الفاتح */
+    color: #ffffff; /* النص باللون الأبيض */
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.2em;
-    border: 3px solid var(--background-color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    font-size: 1.3em;
+    border: 3px solid #333333; /* التدرج اللوني للأسود */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    animation: rank-entry 0.5s ease-out;
+    margin-top: 10px; /* إضافة مساحة أعلى */
+}
+
+/* إضافة تأثير دخول للترتيب */
+@keyframes rank-entry {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* تنسيق الشعار واسم الفريق */
 .team-logo {
-    width: 65px;
-    height: 65px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: 2px solid var(--border-light);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    width: 75px; /* زيادة حجم الشعار */
+    height: 75px;
+    border-radius: 15px; /* إضافة انحناء أكثر */
+    margin-bottom: 15px; /* تحسين المسافة بين الشعار والاسم */
+    border: 2px solid #4f8a8b; /* تدرج لوني على الحدود */
+    transition: transform 0.5s ease, border-color 0.3s ease;
+    animation: logo-entry 0.5s ease-out;
 }
 
+/* تأثير دخول الشعار */
+@keyframes logo-entry {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* تنسيق اسم الفريق */
 .team-name {
-    font-size: 1.4em;
+    font-size: 1.6em; /* زيادة حجم النص */
     font-weight: bold;
-    margin: 12px 0;
-    color: var(--text-light);
-    letter-spacing: 0.5px;
+    margin: 20px 0; /* تحسين المسافة */
+    color: #ffffff; /* النص باللون الأبيض */
+    letter-spacing: 1px; /* زيادة التباعد بين الحروف */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* إضافة ظل للنص */
+    animation: name-entry 0.5s ease-out;
+}
+
+/* تأثير دخول لاسم الفريق */
+@keyframes name-entry {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* تحسين عرض بيانات الفريق */
 .team-stats {
-    font-size: 1.1em;
-    color: var(--text-color);
-    padding: 8px 0;
+    font-size: 1.2em; /* زيادة حجم النص */
+    color: #ffffff; /* النص باللون الأبيض */
+    padding: 10px 0; /* تحسين الحشو */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    animation: stats-entry 0.5s ease-out;
+}
+
+/* إضافة تأثير دخول للإحصائيات */
+@keyframes stats-entry {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* تخصيص ألوان لكل إحصائية */
-.team-stats.points { color: #4f97a1; }
-.team-stats.wins { color: #7d9a4f; }
-.team-stats.draws { color: #a7a35f; }
-.team-stats.losses { color: #a24c5a; }
-.team-stats.goals { color: #51759b; }
+.team-stats.points { color: #00ffd9; } /* أخضر داكن */
+.team-stats.wins { color: #6aff00; } /* أخضر داكن أكثر */
+.team-stats.draws { color: #ffee00; } /* رمادي داكن */
+.team-stats.losses { color: #ff002b; } /* أحمر داكن */
+.team-stats.goals { color: #00f8d3; } /* أخضر داكن */
+
 
 /* تنسيق الأيقونات */
 .team-stats i {
     margin-left: 5px;
-    font-size: 1.2em;
+    font-size: 1.4em; /* تكبير حجم الأيقونات */
     color: inherit;
 }
+
+/* تأثير التمرير (hover) على البطاقة */
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2); /* تأثير الظل عند التمرير */
+}
+
+/* تأثير التمرير (hover) على ترتيب الفريق */
+.rank:hover {
+    background-color: #333333; /* تغيير اللون عند التمرير */
+    color: #4f8a8b;
+    transform: scale(1.1); /* تكبير الترتيب */
+}
+
 
 /* تنسيق زر المزيد */
 .more-button {
@@ -140,9 +218,9 @@ h1 {
 }
 
 .more-button:hover {
-    background-color: #7698b6;
+    background-color: #3ce0d3;
     transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(119, 126, 145, 0.4);
+    box-shadow: 0 8px 15px rgba(22, 187, 132, 0.4);
 }
 
 /* تحسين استجابة التصميم للهواتف المحمولة */
@@ -212,3 +290,96 @@ h1 {
         font-size: 1.1em;
     }
 }
+
+/* تنسيق أساسي للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    direction: rtl; /* الاتجاه من اليمين إلى اليسار */
+    position: relative;
+    overflow-y: auto; /* تمكين التمرير العمودي */
+    padding: 20px 0 0; /* مسافة من الأعلى */
+    overflow-x: hidden; /* منع التمرير الأفقي */
+  }
+  
+  /* تصميم الشبكة المتحركة */
+  .animated-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    );
+    animation: moveGrid 10s linear infinite; /* إعادة الحركة القطريّة */
+    z-index: -1; /* خلف المحتوى */
+    pointer-events: none; /* منع التفاعل مع الشبكة */
+  }
+  
+  
+  /* إضافة نص خافت ولامع في الخلفية */
+  .animated-grid::before {
+    
+    content: "SR LOR";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    color: rgba(0, 255, 170, 0.05); /* لون خافت للغاية */
+    font-weight: bold;
+    z-index: -1; /* خلف الشبكة */
+    pointer-events: none; /* منع التفاعل مع النص */
+    white-space: nowrap;
+    animation: blink 2s infinite; /* تأثير الوميض */
+  }
+  
+  /* حركة الشبكة */
+  @keyframes moveGrid {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px; /* الحركة القطريّة */
+    }
+  }
+  
+  /* تأثير الوميض للنص */
+  @keyframes blink {
+    0%, 100% {
+        color: rgba(0, 255, 170, 0.05);
+    }
+    50% {
+        color: rgba(0, 255, 170, 0.3); /* زيادة سطوع النص */
+    }
+  }
+  
+  /* تحسين العرض على الأجهزة الصغيرة */
+  @media (max-width: 768px) {
+    .animated-grid::before {
+        font-size: 5rem; /* تقليل حجم النص ليتناسب مع الهواتف */
+    }
+  }
+  
+  /* تنسيق المحتوى الرئيسي */
+  main {
+    padding: 1em;
+    position: relative; /* لضمان عدم تأثير الشبكة على المحتوى */
+    z-index: 1; /* فوق الشبكة */
+  }
+  
