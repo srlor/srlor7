@@ -1,176 +1,201 @@
 /* تنسيق الصفحة */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #e8f5e9; /* خلفية خضراء فاتحة */
-    margin: 0;
-    padding: 0;
-    direction: rtl;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #1e2a30; /* خلفية شتوية هادئة */
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  color: #d4e6f1; /* لون نص أزرق فاتح */
 }
 
 header {
-    background-color: #43a047; /* أخضر داكن */
-    color: white;
-    padding: 20px 0;
-    font-size: 1.8em;
-    border-bottom: 5px solid #2e7d32; /* حدود سفلية */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #00384d, #005b73); /* تدرج أزرق شتوي */
+  color: #ffffff;
+  padding: 20px 0;
+  font-size: 1.8em;
+  border-bottom: 5px solid #002b3d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .filters {
-    margin: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeIn 1s ease forwards;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 1s ease forwards;
 }
 
 .filters select,
 .filters button {
-    padding: 12px;
-    font-size: 1em;
-    border: none;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.8); /* خلفية شفافة */
-    color: #2e7d32; /* لون نص أخضر داكن */
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+  padding: 12px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  background: #0c0c0c; /* خلفية زرقاء داكنة */
+  color: #d4e6f1; /* لون النص */
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .filters select:hover,
 .filters button:hover {
-    background-color: #43a047; /* أخضر داكن */
-    color: white;
-    transform: scale(1.05);
+  background: #1c2122; /* لون أزرق فاتح */
+  color: white;
+  transform: scale(1.05);
 }
 
 .filters select {
-    width: 180px;
-    text-align: center;
+  width: 180px;
+  text-align: center;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    padding: 30px;
-    animation: fadeInUp 1s ease forwards;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 30px;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .player {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    width: 270px;
-    background-color: rgba(255, 255, 255, 0.9); /* خلفية شفافة */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.2s;
+  border: 0px solid transparent;
+  border-left: 5px solid #007899; /* إطار جانبي فقط */
+  border-radius: 10px;
+  padding: 20px;
+  width: 270px;
+  background: linear-gradient(145deg, #101111, #2e454f); /* تدرج أزرق رمادي */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .player:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .player img {
-    width: 50px; /* تصغير حجم الصور لتبدو كأيقونات */
-    height: 50px;
-    border-radius: 50%; /* جعل الصور دائرية */
-    margin-bottom: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .player h2 {
-    font-size: 1.2em;
-    margin: 15px 0;
-    color: #2e7d32;
+  font-size: 1.2em;
+  margin: 15px 0;
+  color: #00a8cc; /* لون أزرق فاتح */
 }
 
 .percentage {
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 10px;
+  font-size: 0.9em;
+  color: #b0c4cc; /* لون رمادي مائل للأزرق */
+  margin-top: 10px;
 }
 
 .progress-bar-container {
-    background-color: #ddd;
-    border-radius: 5px;
-    height: 10px;
-    margin: 10px 0;
-    width: 100%;
-    overflow: hidden;
+  background-color: #30454f;
+  border-radius: 5px;
+  height: 10px;
+  margin: 10px 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .progress-bar {
-    background-color: #43a047; /* أخضر داكن */
-    height: 100%;
-    width: 0%;
-    transition: width 0.5s ease;
+  background-color: #00a8cc; /* لون أزرق فاتح */
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
 }
 
 button {
-    background-color: #43a047;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 1em;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
+  background: #004d5e;
+  color: #d4e6f1;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1em;
+  margin-top: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 button:hover {
-    background-color: #2e7d32;
-    transform: scale(1.05);
+  background: #007899;
+  transform: scale(1.05);
 }
 
 button:active {
-    background-color: #1b5e20; /* لون أغمق عند النقر */
-    transform: scale(0.95);
+  background: #005b73;
+  transform: scale(0.95);
 }
 
 button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
 }
 
 button:active::after {
-    width: 200%;
-    height: 200%;
-    opacity: 0;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
 }
 
 footer {
-    background-color: #43a047;
-    color: white;
-    padding: 10px 0;
-    margin-top: 20px;
-    font-size: 0.9em;
-    border-top: 5px solid #2e7d32;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #00384d, #005b73);
+  color: #d4e6f1;
+  padding: 10px 0;
+  margin-top: 20px;
+  font-size: 0.9em;
+  border-top: 5px solid #004d5e;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
 }
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
 
 /* تأثيرات الظهور */
 @keyframes fadeIn {
@@ -239,26 +264,27 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* خلفية نصف شفافة */
+    background: rgba(0, 0, 0, 0.7); /* خلفية شتوية داكنة */
     align-items: center; /* محاذاة عمودية */
     justify-content: center; /* محاذاة أفقية */
     z-index: 1000; /* لضمان ظهور النافذة فوق كل العناصر */
-  }
-  
-  /* تصميم النافذة */
-  .alert-box {
-    background: #fff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* تصميم النافذة */
+.alert-box {
+    background: #2b2b35; /* لون شتوي داكن */
+    color: #d4e6f1; /* لون نص هادئ */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 90%;
     max-width: 350px;
-  }
-  
-  /* تصميم زر الإغلاق */
-  .alert-box button {
-    background-color: #4CAF50; /* لون أخضر */
+}
+
+/* تصميم زر الإغلاق */
+.alert-box button {
+    background-color: #6baed6; /* لون أزرق شتوي */
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -266,67 +292,79 @@ footer {
     cursor: pointer;
     margin-top: 15px;
     font-size: 16px;
-  }
-  
-  .alert-box button:hover {
-    background-color: #45a049;
-  }
-  
-  /* تصميم المشغل */
-  .player {
+}
+
+.alert-box button:hover {
+    background-color: #5a9ec8;
+}
+
+/* تصميم المشغل */
+.player {
     margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #4c4c5e;
+    border-radius: 10px;
+    background-color: #343445;
+    color: #d4e6f1;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  /* تصميم شريط التقدم */
-  .progress-bar-container {
+}
+
+/* تصميم شريط التقدم */
+.progress-bar-container {
     width: 100%;
-    background-color: #ddd;
+    background-color: #52526e;
     height: 10px;
     border-radius: 5px;
     overflow: hidden;
-  }
-  
-  .progress-bar {
-    height: 100%;
-    background-color: #4CAF50;
-    transition: width 0.3s;
-  }
-  
-  /* تحسين التصميم للهواتف */
-  @media (max-width: 600px) {
-    .alert-box {
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-  
-    .alert-box button {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  
-    .player {
-      padding: 8px;
-    }
-  
-    .progress-bar-container {
-      height: 8px;
-    }
-  }
+}
 
-  
-  /* الزر العائم */
+.progress-bar {
+    height: 100%;
+    background-color: #82b6d4;
+    transition: width 0.3s;
+}
+
+/* تحسين التصميم للهواتف */
+@media (max-width: 600px) {
+    .alert-box {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .alert-box button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .player {
+        padding: 15px;
+    }
+
+    .progress-bar-container {
+        height: 8px;
+    }
+}
+
+.player img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border: 2px solid #82b6d4;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  border-radius: 10px; /* زوايا دائرية */
+}
+
+/* الزر العائم */
 #floating-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #267826; /* أخضر غامق */
+    background-color: #6baed6;
     color: #fff;
     padding: 15px;
     border-radius: 50%;
@@ -336,162 +374,148 @@ footer {
     font-size: 18px;
     transition: all 0.3s ease;
     z-index: 1000;
-  }
-  
-  #floating-button:hover {
-    background-color: #1f651f;
+}
+
+#floating-button:hover {
+    background-color: #5a9ec8;
     transform: scale(1.1);
-  }
-  
-  /* الصفحة المنبثقة */
-  .alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+}
+
+/* الصفحة المنبثقة */
+.alert-overlay {
     direction: rtl; /* النص من اليمين لليسار */
     overflow: hidden;
-  }
-  
-  .alert-box {
-    background: #f9f9f9;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
+}
+
+.alert-box {
     max-width: 90%;
-    width: 100%;
-    margin: 0 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.5s ease;
-  }
-  
-  /* الشعارات */
-  .logos {
+}
+
+/* الشعارات */
+.logos {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 25px;
     flex-wrap: wrap;
-  }
-  
-  .logo {
+}
+
+.logo {
     width: 80px;
     height: 80px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
-  
-  .logo:hover {
+}
+
+.logo:hover {
     transform: scale(1.1);
-  }
-  
-  /* عرض المطورين */
-  .developers {
+}
+
+/* عرض المطورين */
+.developers {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     margin-bottom: 20px;
-  }
-  
-  .developer-box {
-    background-color: #dff2df;
-    border: 1px solid #2a9d2a;
+}
+
+.developer-box {
+    background-color: #2b2b35;
+    border: 1px solid #6baed6;
     border-radius: 8px;
     padding: 10px 15px;
     width: 100px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     animation: slideIn 0.5s ease;
-  }
-  
-  .developer-box p {
+}
+
+.developer-box p {
     margin: 0;
     font-size: 14px;
     font-weight: bold;
-    color: #267826;
-  }
-  
-  /* الأسئلة الشائعة */
-  .faq {
+    color: #82b6d4;
+}
+
+/* الأسئلة الشائعة */
+.faq {
     margin-top: 20px;
-    text-align: right; /* النص يبدأ من اليمين */
-  }
-  
-  .faq h3 {
+    text-align: right;
+}
+
+.faq h3 {
     font-size: 18px;
-    color: #267826;
+    color: #6baed6;
     margin-bottom: 15px;
-  }
-  
-  .faq ul {
+}
+
+.faq ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .faq-question {
+}
+
+.faq-question {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    background: #267826; /* أخضر غامق */
-    border: 1px solid #1f651f;
+    background: #6baed6;
+    border: 1px solid #5a9ec8;
     border-radius: 5px;
     margin-bottom: 5px;
     font-size: 14px;
-    color: #fff; /* لون الخط أبيض */
+    color: #fff;
     cursor: pointer;
     animation: fadeIn 0.5s ease;
-  }
-  
-  .faq-answer {
+}
+
+.faq-answer {
     font-size: 14px;
-    color: #555;
-    background: #f5f5f5;
+    color: #d4e6f1;
+    background: #343445;
     padding: 10px 15px;
     border-radius: 5px;
     margin-top: 5px;
     display: none;
-  }
-  
-  /* تحسين العرض للأجهزة المختلفة */
-  @media (max-width: 768px) {
+}
+
+/* تحسين العرض للأجهزة المختلفة */
+@media (max-width: 768px) {
     .logos {
-      gap: 10px;
+        gap: 10px;
     }
-  
+
     .logo {
-      width: 60px;
-      height: 60px;
+        width: 60px;
+        height: 60px;
     }
-  
+
     .developer-box {
-      width: 80px;
-      padding: 8px 10px;
+        width: 80px;
+        padding: 8px 10px;
     }
-  
+
     .developer-box p {
-      font-size: 12px;
+        font-size: 12px;
     }
-  
+
     .faq-question {
-      font-size: 12px;
-      padding: 8px 10px;
+        font-size: 12px;
+        padding: 8px 10px;
     }
-  
+
     .faq-answer {
-      font-size: 12px;
-      padding: 8px 10px;
+        font-size: 12px;
+        padding: 8px 10px;
     }
-  }
+}
+
+
+
   
   /* تأثيرات */
   @keyframes fadeIn {

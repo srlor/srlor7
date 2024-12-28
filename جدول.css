@@ -5,7 +5,7 @@
 */
 body {
     font-family: 'Arial', sans-serif;
-    background: #ffffff;
+    background: #000000;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -24,7 +24,7 @@ main {
 */
 h2 {
     font-size: 2em;
-    color: #388e3c; /* اللون الأخضر الداكن */
+    color: #00d1b2; /* اللون الأخضر الداكن */
     margin-bottom: 1em;
     position: relative; /* لجعل العناصر الفرعية داخل العنصر النسبي */
 }
@@ -35,7 +35,7 @@ h2::after {
     display: block;
     width: 60px;
     height: 5px;
-    background-color: #66bb6a; /* لون الخط الأخضر */
+    background-color: #00ffaa; /* لون الخط الأخضر */
     margin: 0.5em auto 0 auto; /* الخط في المنتصف */
     border-radius: 3px; /* زوايا الخط دائرية */
 }
@@ -46,16 +46,16 @@ h2::after {
   - تأثير الحركات عند تحميل الصفحة أو تمرير الفأرة
 */
 .match-box {
-    background-color: #ffffff;
+    background-color: #201f1f;
     border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* ظل خفيف للصندوق */
+    box-shadow: 0 6px 12px #3b3d3d; /* ظل خفيف للصندوق */
     padding: 1.5em;
     margin: 1.5em auto;
     width: 90%;
     max-width: 600px;
     color: #333;
     text-align: center;
-    border-left: 5px solid #66bb6a; /* خط زخرفي أخضر على الجانب الأيسر */
+    border-left: 5px solid #2c2e2e; /* خط زخرفي أخضر على الجانب الأيسر */
     opacity: 0; /* لجعل الصندوق غير مرئي عند البداية */
     transform: scale(0.9); /* تصغير الحجم بشكل طفيف */
     animation: fadeInBox 0.8s forwards; /* حركة الظهور التدريجية */
@@ -70,7 +70,7 @@ h2::after {
 /* تأثير عند تمرير الفأرة على الصندوق */
 .match-box:hover {
     transform: translateY(-10px); /* رفع الصندوق قليلاً */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* زيادة الظل */
+    box-shadow: 0 10px 20px rgb(0, 255, 170); /* زيادة الظل */
 }
 
 /* تنسيق الفقرات داخل الصندوق */
@@ -109,7 +109,7 @@ h2::after {
     height: 60px;
     margin-bottom: 0.5em;
     border-radius: 10%; /* جعل الصورة مستطيلة بزوايا دائرية */
-    border-left: 3px solid #66bb6a; /* خط زخرفي على الجانب الأيسر */
+    border-left: 3px solid #00eeff; /* خط زخرفي على الجانب الأيسر */
 }
 
 /* تنسيق اسم الفريق */
@@ -121,7 +121,7 @@ h2::after {
 .result {
     font-size: 2.5em;
     font-weight: bold;
-    color: #388e3c;
+    color: #00d1b2;
     margin: 1em 0;
 }
 
@@ -206,7 +206,7 @@ header {
 .navigation-bar a {
     display: block;
     padding: 10px 20px;
-    background-color: #8BC34A; /* اللون الأخضر الفاتح */
+    background-color: #00ccff; /* اللون الأخضر الفاتح */
     color: white;
     text-decoration: none;
     border-radius: 25px; /* حواف دائرية */
@@ -217,23 +217,23 @@ header {
 
 /* تأثير عند مرور الفأرة على الأزرار */
 .navigation-bar a:hover {
-    background-color: #66bb6a; /* تغيير اللون عند التمرير */
+    background-color: #00b6ee; /* تغيير اللون عند التمرير */
 }
 
 /* تأثير عند الضغط على الزر */
 .navigation-bar a:active {
-    background-color: #d32f2f; /* اللون الأحمر عند الضغط */
+    background-color: #a200ff; /* اللون الأحمر عند الضغط */
 }
 
 /* تحديد الزر النشط */
 .navigation-bar a.active {
-    background-color: #d32f2f; /* اللون الأحمر النشط */
+    background-color: #9c09af; /* اللون الأحمر النشط */
 }
 
 
 .goal-details {
     font-family: 'Cairo', sans-serif;
-    color: #0b7013;
+    color: #00eeff;
     font-size: 14px;
     line-height: 1.5;
     margin-top: 20px;
@@ -244,17 +244,17 @@ header {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 15px;
-    background-color: #28a745;
+    background-color: #00e1ff;
     color: #fff;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #00eeff;
     transition: background-color 0.3s ease;
 }
 
 .goal-summary:hover {
-    background-color: #1e8c37;
+    background-color: #00ccff;
 }
 
 .goal-list {
@@ -270,34 +270,34 @@ header {
     justify-content: space-between;
     padding: 10px;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #0000001a;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .goal-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px #00e1ff;
 }
 
 .player-name {
     font-weight: bold;
-    color: #333;
+    color: #00b6ee;
 }
 
 .goal-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #28a745;
+    background-color: #00eeff;
     color: #fff;
     padding: 5px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #00e1ff;
 }
 
 .goal-icon {
@@ -313,7 +313,7 @@ header {
     position: sticky;
     top: 0;
     background-color: white;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #fffefe;
     z-index: 10;
 }
 
@@ -329,14 +329,14 @@ header {
     padding: 0;
     border: none;
     background: none;
-    color: #0b7013;
+    color: #00d1b2;
 }
 
 /* زر التفاصيل */
 .goals-summary {
     font-size: 16px;
     font-weight: bold;
-    color: #0b7013;
+    color: #00b6ee;
     background: none;
     padding: 10px 0;
     border: none;
@@ -367,7 +367,7 @@ details[open] .arrow {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
-    border-bottom: 1px dashed #0b7013;
+    border-bottom: 1px dashed #00d1b2;
     padding-bottom: 5px;
 }
 
@@ -376,7 +376,7 @@ details[open] .arrow {
     text-align: start;
     font-size: 14px;
     font-weight: bold;
-    color: #0b7013;
+    color: #00b6ee;
 }
 
 .player-stats {
@@ -387,12 +387,31 @@ details[open] .arrow {
 }
 
 .player-icon {
-    color: #28A745;
+    color: #00b6ee;
     font-size: 14px;
     margin-bottom: 2px;
 }
 
 .player-goals {
     font-size: 12px;
-    color: #333;
+    color: #17b69e;
 }
+
+strong {
+    color: white; /* اللون الأبيض للنص داخل العنصر <strong> */
+}
+
+.section {
+    padding: 20px;
+    text-align: center;
+}
+
+p {
+    color: white; /* اللون الأبيض للنص داخل العنصر <strong> */
+}
+
+.p {
+    padding: 20px;
+    text-align: center;
+}
+

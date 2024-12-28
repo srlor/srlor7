@@ -1,58 +1,13 @@
+/* تعريف الألوان الأساسية */
 :root {
-    --background-light: #f3f7f0;
-    --background-dark: #121212;
-    --text-light: #2c6e49;
-    --text-dark: #b0b0b0;
-    --card-light: #ffffff;
-    --card-dark: #1e1e1e;
-    --border-light: #2c6e49;
-    --border-dark: #4caf50;
-    --button-light: #2c6e49;
-    --button-dark: #4caf50;
-    --background-color: #f9f9f9;
-    --text-color: #333333;
-    --navbar-color: #ffffff;
-    --icon-color: #32CD32;
-}
-
-/* تحديث لون النص في الوضع الليلي */
-body.dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-}
-
-body.dark-mode h1,
-body.dark-mode .team-name {
-    color: #ffffff;
-}
-
-/* تحسين لون بطاقة الفريق في الوضع الليلي */
-body.dark-mode .team-card {
-    background: var(--card-dark);
-    border-right: 5px solid var(--border-dark);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-/* تنسيق الإحصائيات في الوضع الليلي */
-body.dark-mode .team-stats {
-    color: #aaaaaa;
-}
-
-body.dark-mode .team-stats.points { color: #4caf50; }
-body.dark-mode .team-stats.wins { color: #81c784; }
-body.dark-mode .team-stats.draws { color: #ffd54f; }
-body.dark-mode .team-stats.losses { color: #e57373; }
-body.dark-mode .team-stats.goals { color: #64b5f6; }
-
-/* تحسين زر المزيد في الوضع الليلي */
-body.dark-mode .more-button {
-    background-color: var(--button-dark);
-    color: #ffffff;
-}
-
-.more-button:hover {
-    background-color: #388e3c;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    --background-color: #1f2a3d; /* لون خلفية داكن هادئ */
+    --text-light: #e2e2e2; /* لون نص فاتح */
+    --card-light: linear-gradient(145deg, #3e4b6b, #2c3a5a); /* تدرج لوني هادئ للبطاقات */
+    --border-light: #8d9cb5; /* لون الحدود بلون رمادي دافئ */
+    --button-light: linear-gradient(90deg, #a8b5d1, #6f7f98); /* تدرج لوني دافئ للأزرار */
+    --text-color: #d9d9d9; /* لون النص الأساسي */
+    --navbar-color: #2a3b52; /* لون شريط التنقل */
+    --icon-color: #b8c3d5; /* لون الأيقونات */
 }
 
 /* إعدادات أساسية */
@@ -63,7 +18,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: var(--background-light);
+    background-color: var(--background-color);
     color: var(--text-light);
     direction: rtl;
     overflow-x: hidden; /* منع الالتفاف الأفقي */
@@ -76,16 +31,6 @@ h1 {
     font-size: 2em;
     text-align: center;
     font-weight: bold;
-}
-
-/* الوضع الليلي */
-body.dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-}
-
-body.dark-mode h1 {
-    color: var(--text-dark);
 }
 
 /* تنسيق الحاوية الرئيسية */
@@ -104,7 +49,7 @@ body.dark-mode h1 {
     background: var(--card-light);
     padding: 30px 20px;
     border-radius: 15px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,12 +58,6 @@ body.dark-mode h1 {
     text-align: center;
     border-right: 5px solid var(--border-light);
     min-height: 320px;
-}
-
-body.dark-mode .team-card {
-    background: var(--card-dark);
-    border-right: 5px solid var(--border-dark);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* تنسيق الترتيب */
@@ -136,14 +75,9 @@ body.dark-mode .team-card {
     justify-content: center;
     font-weight: bold;
     font-size: 1.2em;
-    border: 3px solid var(--background-light);
+    border: 3px solid var(--background-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     z-index: 1;
-}
-
-body.dark-mode .rank {
-    background-color: var(--border-dark);
-    border: 3px solid var(--background-dark);
 }
 
 /* تنسيق الشعار واسم الفريق */
@@ -156,10 +90,6 @@ body.dark-mode .rank {
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-body.dark-mode .team-logo {
-    border-color: var(--border-dark);
-}
-
 .team-name {
     font-size: 1.4em;
     font-weight: bold;
@@ -168,14 +98,10 @@ body.dark-mode .team-logo {
     letter-spacing: 0.5px;
 }
 
-body.dark-mode .team-name {
-    color: var(--text-dark);
-}
-
 /* تحسين عرض بيانات الفريق */
 .team-stats {
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-color);
     padding: 8px 0;
     width: 100%;
     display: flex;
@@ -183,18 +109,12 @@ body.dark-mode .team-name {
     justify-content: space-between;
 }
 
-body.dark-mode .team-stats {
-    color: #bbb;
-}
-
 /* تخصيص ألوان لكل إحصائية */
-.team-stats.points { color: var(--border-light); }
-.team-stats.wins { color: #4caf50; }
-.team-stats.draws { color: #ffc107; }
-.team-stats.losses { color: #f44336; }
-.team-stats.goals { color: #2196f3; }
-
-body.dark-mode .team-stats.points { color: var(--border-dark); }
+.team-stats.points { color: #4f97a1; }
+.team-stats.wins { color: #7d9a4f; }
+.team-stats.draws { color: #a7a35f; }
+.team-stats.losses { color: #a24c5a; }
+.team-stats.goals { color: #51759b; }
 
 /* تنسيق الأيقونات */
 .team-stats i {
@@ -207,7 +127,7 @@ body.dark-mode .team-stats.points { color: var(--border-dark); }
 .more-button {
     margin-top: 15px;
     padding: 12px 24px;
-    background-color: var(--button-light);
+    background: var(--button-light);
     color: #ffffff;
     border: none;
     border-radius: 25px;
@@ -215,18 +135,14 @@ body.dark-mode .team-stats.points { color: var(--border-dark); }
     font-size: 1.1em;
     font-weight: 500;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
-body.dark-mode .more-button {
-    background-color: var(--button-dark);
-}
-
 .more-button:hover {
-    background-color: #22653e;
+    background-color: #7698b6;
     transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 15px rgba(119, 126, 145, 0.4);
 }
 
 /* تحسين استجابة التصميم للهواتف المحمولة */
@@ -266,7 +182,7 @@ body.dark-mode .more-button {
     max-width: 350px; /* تعديل العرض ليصبح أصغر على الجوالات */
     padding: 8px 12px;
     background-color: var(--navbar-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow: hidden; /* منع الالتفاف */
