@@ -2,7 +2,7 @@
 :root {
     
     --text-light: #e2e2e2; /* لون نص فاتح */
-    --card-light: linear-gradient(145deg, #030303, #43504a); /* تدرج لوني هادئ للبطاقات */
+    --card-light: linear-gradient(145deg, #161a18, #161a18); /* تدرج لوني هادئ للبطاقات */
     --border-light: #00ff40; /* لون الحدود بلون رمادي دافئ */
     --button-light: linear-gradient(90deg, #17bb56, #00ff40); /* تدرج لوني دافئ للأزرار */
     --text-color: #d9d9d9; /* لون النص الأساسي */
@@ -46,7 +46,7 @@ h1 {
 
 /* تنسيق بطاقة الفريق */
 .team-card {
-    background: linear-gradient(145deg, #333333, #4f8a8b); /* تدرج لوني من الأسود إلى الأخضر الفاتح */
+    background: linear-gradient(145deg, #161a18, #161a18); /* تدرج لوني من الأسود إلى الأخضر الفاتح */
     padding: 30px 20px;
     border-radius: 20px; /* زاوية أكثر انحناءً */
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.1); /* تأثير الظل */
