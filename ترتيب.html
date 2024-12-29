@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>مباريات الجولات</title>
+    <link rel="stylesheet" href="جدول.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+/* تنسيق أساسي للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    direction: rtl; /* الاتجاه من اليمين إلى اليسار */
+    position: relative;
+    overflow-y: auto; /* تمكين التمرير العمودي */
+    padding: 20px 0 0; /* مسافة من الأعلى */
+    overflow-x: hidden; /* منع التمرير الأفقي */
+  }
+  
+  /* تصميم الشبكة المتحركة */
+  .animated-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 170, 0.2),
+        rgba(0, 255, 170, 0.2) 1px,
+        transparent 1px,
+        transparent 30px /* تكبير حجم المربعات */
+    );
+    animation: moveGrid 10s linear infinite; /* إعادة الحركة القطريّة */
+    z-index: -1; /* خلف المحتوى */
+    pointer-events: none; /* منع التفاعل مع الشبكة */
+  }
+  
+  /* إضافة نص خافت ولامع في الخلفية */
+  .animated-grid::before {
+    content: "SR LOR";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    color: rgba(0, 255, 170, 0.05); /* لون خافت للغاية */
+    font-weight: bold;
+    z-index: -1; /* خلف الشبكة */
+    pointer-events: none; /* منع التفاعل مع النص */
+    white-space: nowrap;
+    animation: blink 2s infinite; /* تأثير الوميض */
+  }
+  
+  /* حركة الشبكة */
+  @keyframes moveGrid {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 60px; /* الحركة القطريّة */
+    }
+  }
+  
+  /* تأثير الوميض للنص */
+  @keyframes blink {
+    0%, 100% {
+        color: rgba(0, 255, 170, 0.05);
+    }
+    50% {
+        color: rgba(0, 255, 170, 0.3); /* زيادة سطوع النص */
+    }
+  }
+  
+  /* تحسين العرض على الأجهزة الصغيرة */
+  @media (max-width: 768px) {
+    .animated-grid::before {
+        font-size: 5rem; /* تقليل حجم النص ليتناسب مع الهواتف */
+    }
+  }
+  
+  /* تنسيق المحتوى الرئيسي */
+  main {
+    padding: 1em;
+    position: relative; /* لضمان عدم تأثير الشبكة على المحتوى */
+    z-index: 1; /* فوق الشبكة */
+  }
+
+  #top-players {
+    margin: 20px auto;
+    max-width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.top-player {
+    background-color: #2e2b2b; /* خلفية المربعات باللون الأسود الفاتح */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 3px 8px #00a7d1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 240px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.top-player:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px #00d1b2;
+}
+
+.top-player h3 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #0cc2fa; /* اللون داكن للنص */
+    font-weight: bold;
+    text-align: center;
+}
+
+.top-player p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #00d9ff; /* اللون الفاتح للنص */
+    text-align: center;
+}
+
+.rank-badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #00ccff;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translate(-8px, 16px); /* لتحريك النص 5 بكسل إلى اليسار (عبر المحور الأفقي) و 5 بكسل إلى الأسفل (عبر المحور الرأسي) */
+}
+
+.progress-bar-container {
+    background-color: #e0e0e0;
+    height: 8px; /* ارتفاع الشريط */
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0099ff, #00c3ff); /* تدرج لوني أخضر */
+    width: 0%; /* الشريط يبدأ فارغًا */
+    position: relative;
+    animation: snowEffect 2s linear infinite; /* تأثير الثلج المتحرك */
+    transition: width 0.4s ease-in-out;
+}
+  
+</style>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA6j7EJGxC1PIvvBZWI4iGUL6bUlsExIAE",
+      authDomain: "srlor-64eed.firebaseapp.com",
+      databaseURL: "https://srlor-64eed-default-rtdb.firebaseio.com",
+      projectId: "srlor-64eed",
+      storageBucket: "srlor-64eed.appspot.com",
+      messagingSenderId: "349533508082",
+      appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const votesRef = ref(database, 'votes');
+    const topPlayersContainer = document.getElementById('top-players');
+
+    onValue(votesRef, (snapshot) => {
+      const votes = snapshot.val() || {};
+      displayTopPlayers(votes);
+    });
+
+    function displayTopPlayers(votes) {
+      const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
+      const sortedPlayers = Object.entries(votes)
+        .sort(([, votesA], [, votesB]) => votesB - votesA)
+        .slice(0, 101);
+
+      topPlayersContainer.innerHTML = '';
+
+      sortedPlayers.forEach(([playerId, voteCount], index) => {
+        const percentage = totalVotes > 0 ? ((voteCount / totalVotes) * 100).toFixed(1) : 0;
+
+        const playerElement = document.createElement('div');
+        playerElement.className = 'top-player';
+        playerElement.innerHTML = `
+          <span class="rank-badge">${index + 1}</span>
+          <h3>${getPlayerName(playerId)}</h3>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: ${percentage}%"></div>
+          </div>
+          <p>${percentage}%</p>
+        `;
+        playerElement.addEventListener('click', () => {
+          window.location.href = `تصويت.html?player=${playerId}`;
+        });
+        topPlayersContainer.appendChild(playerElement);
+      });
+    }
+
+    function getPlayerName(playerId) {
+// قم بتعويض هذه البيانات بأسماء اللاعبين الفعلية.
+const playerNames = {
+    player1: 'شادي رفيق',
+player2: 'محمد زياد',
+player3: 'عبد الله مبارك الشهراني',
+player4: 'عبد العزيز ابو زوعة',
+player5: 'عبد الرحمن عبد السبحان',
+player6: 'مسفر محمد سعد',
+player7: 'منهد محمد علي الشهري',
+player8: 'احمد علي العمري',
+player9: 'فراس عبد الرحمن',
+player10: 'أحمد المنتصر بالله',
+player11: 'محمد عمران',
+player12: 'محمد علي',
+player13: 'عمر المنتصر بالله',
+player14: 'أمجد عصام',
+player15: 'محمد عثمان',
+player16: 'عبد الله محمد',
+player17: 'أحمد السيد',
+player18: 'نادر صالح الشمراني',
+player19: 'طلال حسن',
+player20: 'بهاء أحمد',
+player21: 'محمد نبيل',
+player22: 'نايف أحمد',
+player23: 'عبد الإله شار',
+player24: 'معاذ ظافر محمد الشهري',
+player25: 'حاتم البسامي',
+player26: 'فيصل علي',
+player27: 'عبد العزيز بكر',
+player28: 'عبد العزيز عبد الله الشهري',
+player29: 'حامد أحمد',
+player30: 'محمد رامي',
+player31: 'عبد الله سعد',
+player32: 'عبد الملك عبد الله',
+player33: 'معن البكري',
+player34: 'زياد البارقي',
+player35: 'محمد الطاهر',
+player36: 'عمر الملحم',
+player37: 'عبدالله علي',
+player38: 'محمد ظافر',
+player39: 'هيثم عبدالرحمن',
+player40: 'يعقوب أسامة',
+player41: 'محمد تامر',
+player42: 'عبدالله محسن',
+player43: 'تركي جمعان',
+player44: 'سعود ظافر',
+player45: 'أسامة مبارك',
+player46: 'فيصل حسن الشهري',
+player47: 'البراء ظافر',
+player48: 'محمد خالد',
+player49: 'معاذ عبد الهادي',
+player50: 'شاكر ظافر',
+player51: 'انس الرشيد',
+player52: 'نواف حسن العمري',
+player53: 'مشعل ناصر',
+player54: 'وليد محمد',
+player55: 'نواف حسين',
+player56: 'يزن مشبب',
+player57: 'هيثم ماجد',
+player58: 'سيف غرمان',
+player59: 'نواف ظافر',
+player60: 'تركي ناصر',
+player61: 'عبدالله فهد',
+player62: 'عبدالله عبدالرحمن',
+player63: 'علي الزهراني',
+player64: 'محمد مسبل',
+player65: 'شعيب عصام',
+player66: 'حسام ناصر',
+player67: 'عبدالرحمن بدر',
+player68: 'أحمد مازن',
+player69: 'بدر منصور سعد',
+player70: 'سلمان فهد',
+player71: 'فهد سعود',
+player72: 'اسامة باسم',
+player73: 'عمر عبدالرحمن',
+player74: 'زياد عوض الكلثمي',
+player75: 'نواف فراج الكلثمي',
+player76: 'عبدالله محمد عبدالله البكري',
+player77: 'بسام عبدالرحمن البسامي',
+player78: 'زياد علي محمود',
+player79: 'علي زياد الحلو',
+player80: 'مصعب صالح بوست',
+player81: 'فراس فهد',
+player82: 'عبدالله أحمد زيد',
+player83: 'مازن عيد رمضان',
+player84: 'عبد الله موسى الشمراني',
+player85: 'علي عبد الباقي علي',
+player86: 'وليد علي ظافر',
+player87: 'إسماعيل نبيل',
+player88: 'محمد اوهيب سليمان',
+player89: 'أحمد قصي حسن',
+player90: 'بتال فايز البكري',
+player91: 'بندر محمد ظافر البكري',
+player92: 'عمر إسماعيل محمد',
+player93: 'فيصل زاهر',
+player94: 'يزيد عبدالله',
+player95: 'عمر خالد',
+player96: 'محمد خالد',
+player97: 'فيصل عبد الله',
+player98: 'بندر البكري',
+player99: 'عمر محمود',
+player100: 'اسامة عبدالله',
+player101: 'وائل مشبب'
+};
+return playerNames[playerId] || playerId;
+}
+
+  </script>
+
+<body>
+    <div class="animated-grid"></div>
+    <div id="top-players"></div> 
+
+
+    
+    
+            
+
+                
+
+  
+</body>
+
+
+  
+</html>

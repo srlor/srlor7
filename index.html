@@ -443,6 +443,25 @@ body {
         background-size: 30px 30px;
     }
 }
+.full-ranking-link {
+  display: inline-block;
+  margin-top: 10px; /* مسافة أعلى الرابط */
+  margin-bottom: 10px; /* مسافة أسفل الرابط لفصله عن المحتوى */
+  padding: 10px 10px;
+  text-decoration: none;
+  background-color: #1d2020; /* الأزرق الفاتح */
+  color: #00ffea; /* الأزرق الغامق للنص */
+  border: 1px solid #00ffea;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.full-ranking-link:hover {
+  background-color: #0077c2;
+  color: white;
+}
 
 
     </style>
@@ -511,6 +530,11 @@ body {
     </div>
     <h2 id="stats-section">أعلى 5 لاعبين</h2>
     <div id="top-players"></div> 
+    <div class="link-container">
+        <a href="ترتيب.html" class="full-ranking-link">الترتيب الكامل</a>
+      </div>
+      
+
 
     <h2 id="stats-section">الشروط قوانين</h2>
 
@@ -831,66 +855,53 @@ h2.title {
 }
 
 /* Responsive Styling */
-@media (max-width: 768px) {
-    .dropbtn {
-        font-size: 18px;
-        padding: 14px;
+@keyframes breath {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #2a2a2a;
+        opacity: 1;
     }
-
-    .law-box {
-        flex-direction: column;
-        align-items: flex-end; /* Align content to the right */
-    }
-
-    .law-image {
-        margin-bottom: 15px;
-    }
-
-    .law-text {
-        font-size: 16px;
+    50% { 
+        transform: scale(1.1); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 15px rgba(176, 196, 222, 0.5);
+        background-color: #3b3b3b; 
+        opacity: 0.9;
     }
 }
 
-
-@keyframes breath {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
 
 .breath {
-  animation: breath 3s ease-in-out infinite;
+    position: relative;
+    animation: breath 3s ease-in-out infinite;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-    .snow-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* الثلج لا يتفاعل مع النقر */
-      z-index: 9999; /* يظهر فوق كل شيء */
-    }
+.breath::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: rgba(176, 196, 222, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    animation: ripple 3s ease-out infinite;
+    z-index: -1; /* خلف العنصر الأساسي */
+}
 
-    .snowflake {
-      position: absolute;
-      top: -10px;
-      color: white;
-      font-size: 1rem;
-      user-select: none;
-      pointer-events: none;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-10px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-    }
+   
   </style>
  
 
@@ -1056,54 +1067,5 @@ return playerNames[playerId] || playerId;
 }
 
   </script>
-
-<script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"></script>
-
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyA6j7EJGxC1PIvvBZWI4iGUL6bUlsExIAE",
-        authDomain: "srlor-64eed.firebaseapp.com",
-        databaseURL: "https://srlor-64eed-default-rtdb.firebaseio.com",
-        projectId: "srlor-64eed",
-        storageBucket: "srlor-64eed.appspot.com",
-        messagingSenderId: "349533508082",
-        appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
-    };
-
-    const app = firebase.initializeApp(firebaseConfig);
-    const database = firebase.database(app);
-    const userId = localStorage.getItem('userId') || Date.now().toString();
-    localStorage.setItem('userId', userId);
-
-    function togglePopup() {
-        const popup = document.getElementById('popup');
-        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function addLike() {
-        const likeButton = document.getElementById('likeButton');
-        const likeCount = document.getElementById('likeCount');
-
-        database.ref('likes/' + userId).once('value', (snapshot) => {
-            if (snapshot.exists()) {
-                alert('لقد قمت بالإعجاب مسبقًا!');
-            } else {
-                database.ref('likes/' + userId).set(true);
-                database.ref('likeCount').transaction((currentLikes) => {
-                    return (currentLikes || 0) + 1;
-                });
-            }
-        });
-
-        database.ref('likeCount').on('value', (snapshot) => {
-            likeCount.textContent = snapshot.val() + ' إعجاب';
-        });
-    }
-
-    database.ref('likeCount').on('value', (snapshot) => {
-        document.getElementById('likeCount').textContent = (snapshot.val() || 0) + ' إعجاب';
-    });
-</script>
 
 </html>
