@@ -1067,5 +1067,50 @@ return playerNames[playerId] || playerId;
 }
 
   </script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyA6j7EJGxC1PIvvBZWI4iGUL6bUlsExIAE",
+        authDomain: "srlor-64eed.firebaseapp.com",
+        databaseURL: "https://srlor-64eed-default-rtdb.firebaseio.com",
+        projectId: "srlor-64eed",
+        storageBucket: "srlor-64eed.appspot.com",
+        messagingSenderId: "349533508082",
+        appId: "1:349533508082:web:84d4db517f0769aaf81b6b"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database(app);
+    const userId = localStorage.getItem('userId') || Date.now().toString();
+    localStorage.setItem('userId', userId);
+
+    function togglePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function addLike() {
+        const likeButton = document.getElementById('likeButton');
+        const likeCount = document.getElementById('likeCount');
+
+        database.ref('likes/' + userId).once('value', (snapshot) => {
+            if (snapshot.exists()) {
+                alert('لقد قمت بالإعجاب مسبقًا!');
+            } else {
+                database.ref('likes/' + userId).set(true);
+                database.ref('likeCount').transaction((currentLikes) => {
+                    return (currentLikes || 0) + 1;
+                });
+            }
+        });
+
+        database.ref('likeCount').on('value', (snapshot) => {
+            likeCount.textContent = snapshot.val() + ' إعجاب';
+        });
+    }
+
+    database.ref('likeCount').on('value', (snapshot) => {
+        document.getElementById('likeCount').textContent = (snapshot.val() || 0) + ' إعجاب';
+    });
+</script>
 
 </html>
