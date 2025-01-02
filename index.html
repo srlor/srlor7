@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1206526904930331"
+     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +15,7 @@
             margin: 30px 0 10px;
             font-size: 2.5em;
             font-weight: bold;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.103);
             display: inline-block;
             position: relative;
             text-align: center; /* لتوسيط النص */
@@ -64,7 +66,7 @@
             color: #06b8ff;
             margin-top: 20px;
             font-size: 3em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 5px #00000004;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeInDown 1s forwards;
@@ -100,7 +102,7 @@
         }
 
         .card {
-            background: #ffffff0d;
+            background: #ffffff00;
             border-radius: 15px;
             margin: 15px;
             width: 320px;
@@ -337,7 +339,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 8px rgba(14, 13, 13, 0.3);
     transform: translate(-5px, 5px); /* لتحريك النص 5 بكسل إلى اليسار (عبر المحور الأفقي) و 5 بكسل إلى الأسفل (عبر المحور الرأسي) */
 }
 
@@ -372,37 +374,26 @@ body {
     100% {
         background-position: -40px -40px;
     }
+}
 /* إعدادات الصفحة */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(0, 123, 255, 0.2), transparent 70%);
-    background-size: 40px 40px, 40px 40px, 100% 100%;
-    animation: gridMove 5s linear infinite, smokeEffect 10s ease-in-out infinite;
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 5s linear infinite;
     overflow-x: hidden; /* لمنع التمرير الأفقي */
-    position: relative;
 }
 
 /* حركة الشبكة */
 @keyframes gridMove {
     0% {
-        background-position: 0 0, 0 0, center;
+        background-position: 0 0;
     }
     100% {
-        background-position: -40px -40px, -40px -40px, center;
-    }
-}
-
-/* حركة الدخان */
-@keyframes smokeEffect {
-    0%, 100% {
-        background-position: 0 0, 0 0, -20px -20px;
-    }
-    50% {
-        background-position: 0 0, 0 0, 20px 20px;
+        background-position: -40px -40px;
     }
 }
 
@@ -451,10 +442,9 @@ body {
     
     /* تعديل حجم الشبكة ليكون أقل كثافة على الهواتف */
     body {
-        background-size: 30px 30px, 30px 30px, 100% 100%;
+        background-size: 30px 30px;
     }
 }
-
 .full-ranking-link {
   display: inline-block;
   margin-top: 10px; /* مسافة أعلى الرابط */
