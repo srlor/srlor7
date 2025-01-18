@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>بطولة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Amiri', serif;
+            background-color: #000;
+            background-image: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 255, 0, 0.1) 50%, rgba(0, 255, 0, 0.1) 75%, transparent 75%, transparent);
+            background-size: 40px 40px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00cc00;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00cc00;
+            transform: scale(1.05);
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .status.completed {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .status.now {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .status.soon {
+            background-color: #f44336;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 6px;
+                font-size: 12px;
+            }
+
+            .status {
+                margin-top: 8px;
+                align-self: flex-end;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مراحل البطولة</h1>
+
+        <a href="جدول.html" class="button">
+            دور النقاط
+            <span class="status completed">مكتمل</span>
+        </a>
+
+        <a href="ربع النهائي.html" class="button">
+            ربع النهائي
+            <span class="status now">الآن</span>
+        </a>
+
+        <a href="semi-finals.html" class="button">
+            نصف النهائي
+            <span class="status soon">قريباً</span>
+        </a>
+
+        <a href="final.html" class="button">
+            النهائي
+            <span class="status soon">قريباً</span>
+        </a>
+    </div>
+</body>
+</html>

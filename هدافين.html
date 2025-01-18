@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الهدافين</title>
+    <style>
+        body {
+            font-family: "Tahoma", sans-serif;
+            background-color: #101820;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00ff88;
+            margin: 20px 0;
+            text-shadow: 0 4px 8px rgba(0, 255, 136, 0.6);
+        }
+
+        .ranking {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 0 2px 4px rgba(255, 204, 0, 0.8);
+        }
+
+        .container {
+            max-width: 700px;
+            width: 90%;
+            background: linear-gradient(to bottom, #004d00, #002200);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1a1a1a;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .player:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .player img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #00ff88;
+        }
+
+        .player-info {
+            flex: 1;
+            text-align: left;
+            padding: 0 15px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .player-rank {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0 2px 4px rgba(255, 204, 0, 0.8);
+        }
+
+        .player-goals {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        @media (max-width: 600px) {
+            .player {
+                flex-direction: column;
+                text-align: center;
+            }
+            .player-info {
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>موقع الهدافين</h1>
+    <div class="ranking">ترتيب اللاعبين من الأفضل إلى الأسوأ</div>
+    <div class="container" id="players-container">
+        <!-- سيتم إضافة اللاعبين ديناميكيًا هنا -->
+    </div>
+
+    <script>
+        // قائمة اللاعبين
+        const players = [
+            { name: "أحمد السيد", goals: 4, teamLogo: "team_logo_placeholder.png" },
+            { name: "هيثم ماجد", goals: 4, teamLogo: "team_logo_placeholder.png" },
+            { name: "محمد رامي", goals: 4, teamLogo: "team_logo_placeholder.png" },
+            { name: "عبد الله مبارك", goals: 3, teamLogo: "team_logo_placeholder.png" },
+            { name: "سيف غرمان", goals: 3, teamLogo: "team_logo_placeholder.png" },
+            { name: "أحمد مازن", goals: 3, teamLogo: "team_logo_placeholder.png" },
+            { name: "عمر الجبيري", goals: 3, teamLogo: "team_logo_placeholder.png" },
+            { name: "نايف", goals: 3, teamLogo: "team_logo_placeholder.png" },
+            { name: "فيصل عبد الله", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "هيثم عبد الرحمن", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "وليد عبد الرحمن", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "معاذ عبد الهادي", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "نايف أحمد", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "حسام ناصر", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "عبد الله البكري", goals: 2, teamLogo: "team_logo_placeholder.png" },
+            { name: "شعيب عصام", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "سلمان الأحمري", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "نواف فراج", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "عبد الله محمد", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "تركي", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "شاكر ظافر", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "طلال حسن", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "بهاء أحمد", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "زياد", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "شادي رفيق", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "عبد الرحمن عبد السبحان", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "نواف هايد", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "محمد خالد", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "عمر محمود", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "أمجد عصام", goals: 1, teamLogo: "team_logo_placeholder.png" },
+        ];
+
+        // ترتيب اللاعبين حسب الأهداف (تنازلي)
+        players.sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name, 'ar'));
+
+        // عرض اللاعبين
+        const container = document.getElementById("players-container");
+        players.forEach((player, index) => {
+            const playerElement = document.createElement("div");
+            playerElement.className = "player";
+            playerElement.innerHTML = `
+                <span class="player-rank">#${index + 1}</span>
+                <img src="${player.teamLogo}" alt="شعار الفريق">
+                <div class="player-info">
+                    <span>${player.name}</span>
+                </div>
+                <div class="player-goals">${player.goals} ${player.goals === 1 ? 'هدف' : 'أهداف'}</div>
+            `;
+            container.appendChild(playerElement);
+        });
+    </script>
+</body>
+</html>
