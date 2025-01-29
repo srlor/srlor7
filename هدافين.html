@@ -3,106 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع الهدافين</title>
+    <title>SR LOR</title>
     <style>
-        body {
-            font-family: "Tahoma", sans-serif;
-            background-color: #101820;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            text-align: center;
-        }
+     body {
+    font-family: "Tahoma", sans-serif;
+    background-color: #0d1b2a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    direction: rtl;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            color: #00ff88;
-            margin: 20px 0;
-            text-shadow: 0 4px 8px rgba(0, 255, 136, 0.6);
-        }
+h1 {
+    font-size: 2.5rem;
+    color: #fca311;
+    margin: 20px 0;
+    text-shadow: 0 4px 8px rgba(252, 163, 17, 0.6);
+}
 
-        .ranking {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #ffcc00;
-            text-shadow: 0 2px 4px rgba(255, 204, 0, 0.8);
-        }
+.ranking {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e63946;
+    text-shadow: 0 2px 4px rgba(230, 57, 70, 0.8);
+}
 
-        .container {
-            max-width: 700px;
-            width: 90%;
-            background: linear-gradient(to bottom, #004d00, #002200);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
+.container {
+    max-width: 700px;
+    width: 90%;
+    background: linear-gradient(to bottom, #14213d, #000814);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
 
-        .player {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #1a1a1a;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.player {
+    display: flex;
+    align-items: center;
+    background: #1b263b;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: right;
+    justify-content: flex-start;
+}
 
-        .player:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
+.player:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
 
-        .player img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid #00ff88;
-        }
+.player-rank {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e63946;
+    text-shadow: 0 2px 4px rgba(230, 57, 70, 0.8);
+    margin-left: 15px;
+}
 
-        .player-info {
-            flex: 1;
-            text-align: left;
-            padding: 0 15px;
-            font-size: 1.2rem;
-            color: #fff;
-        }
+.player img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    border: 2px solid #fca311;
+    object-fit: cover;
+    margin-left: 15px;
+}
 
-        .player-rank {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffcc00;
-            text-shadow: 0 2px 4px rgba(255, 204, 0, 0.8);
-        }
+.player-info {
+    flex: 1;
+    text-align: right;
+    font-size: 1rem;
+    color: #e5e5e5;
+}
 
-        .player-goals {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00ff88;
-        }
+.player-goals {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fca311;
+}
 
-        @media (max-width: 600px) {
-            .player {
-                flex-direction: column;
-                text-align: center;
-            }
-            .player-info {
-                text-align: center;
-                padding: 10px 0;
-            }
-        }
+@media (max-width: 600px) {
+    .player {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+    }
+    .player img {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    .player-rank {
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+    .player-info {
+        font-size: 0.9rem;
+    }
+    .player-goals {
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
-    <h1>موقع الهدافين</h1>
-    <div class="ranking">ترتيب اللاعبين من الأفضل إلى الأسوأ</div>
+    <h1>SR LOR</h1>
+    <div class="ranking">هدافين الدوري</div>
     <div class="container" id="players-container">
         <!-- سيتم إضافة اللاعبين ديناميكيًا هنا -->
     </div>
@@ -110,36 +126,38 @@
     <script>
         // قائمة اللاعبين
         const players = [
-            { name: "أحمد السيد", goals: 4, teamLogo: "team_logo_placeholder.png" },
-            { name: "هيثم ماجد", goals: 4, teamLogo: "team_logo_placeholder.png" },
-            { name: "محمد رامي", goals: 4, teamLogo: "team_logo_placeholder.png" },
-            { name: "عبد الله مبارك", goals: 3, teamLogo: "team_logo_placeholder.png" },
-            { name: "سيف غرمان", goals: 3, teamLogo: "team_logo_placeholder.png" },
-            { name: "أحمد مازن", goals: 3, teamLogo: "team_logo_placeholder.png" },
-            { name: "عمر الجبيري", goals: 3, teamLogo: "team_logo_placeholder.png" },
-            { name: "نايف", goals: 3, teamLogo: "team_logo_placeholder.png" },
-            { name: "فيصل عبد الله", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "هيثم عبد الرحمن", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "وليد عبد الرحمن", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "معاذ عبد الهادي", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "نايف أحمد", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "حسام ناصر", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "عبد الله البكري", goals: 2, teamLogo: "team_logo_placeholder.png" },
-            { name: "شعيب عصام", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "سلمان الأحمري", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "نواف فراج", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "عبد الله محمد", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "تركي", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "شاكر ظافر", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "طلال حسن", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "بهاء أحمد", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "زياد", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "شادي رفيق", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "عبد الرحمن عبد السبحان", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "نواف هايد", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "محمد خالد", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "عمر محمود", goals: 1, teamLogo: "team_logo_placeholder.png" },
-            { name: "أمجد عصام", goals: 1, teamLogo: "team_logo_placeholder.png" },
+            { name: "أحمد السيد", goals: 4, teamLogo: "ثالث 2.png" },
+            { name: "هيثم ماجد", goals: 4, teamLogo: "ثاني 4.png" },
+            { name: "محمد رامي", goals: 4, teamLogo: "ثالث  4.png" },
+            { name: "عبد الله مبارك", goals: 3, teamLogo: "ثالث 1.png" },
+            { name: "سيف غرمان", goals: 3, teamLogo: "ثاني 4.png" },
+            { name: "أحمد مازن", goals: 3, teamLogo: "اولى 1.png" },
+            { name: "عمر الجبيري", goals: 3, teamLogo: "اولى 4.png" },
+            { name: "نايف", goals: 3, teamLogo: "ثالث 3.png" },
+            { name: "فيصل عبد الله", goals: 2, teamLogo: "اولى 4.png" },
+            { name: "هيثم عبد الرحمن", goals: 2, teamLogo: "ثاني 1.png" },
+            { name: "وليد عبد الرحمن", goals: 2, teamLogo: "ثاني 3.png" },
+            { name: "معاذ عبد الهادي", goals: 2, teamLogo: "ثاني 3.png" },
+            { name: "نايف أحمد", goals: 2, teamLogo: "ثالث 3.png" },
+            { name: "حسام ناصر", goals: 2, teamLogo: "اولى 1.png" },
+            { name: "عبد الله البكري", goals: 2, teamLogo: "ثاني 4.png" },
+            { name: "شعيب عصام", goals: 1, teamLogo: "اولى 1.png" },
+            { name: "سلمان الأحمري", goals: 1, teamLogo: "اولى 1.png" },
+            { name: "نواف فراج", goals: 1, teamLogo: "اولى 2.png" },
+            { name: "عبد الله محمد", goals: 1, teamLogo: "اولى 2.png" },
+            { name: "تركي", goals: 1, teamLogo: "ثاني 1.png" },
+            { name: "شاكر ظافر", goals: 2, teamLogo: "ثاني 3.png" },
+            { name: "طلال حسن", goals: 1, teamLogo: "ثالث 3.png" },
+            { name: "بهاء أحمد", goals: 1, teamLogo: "ثالث 3.png" },
+            { name: "زياد", goals: 1, teamLogo: "ثالث  4.png" },
+            { name: "شادي رفيق", goals: 1, teamLogo: "ثالث 1.png" },
+            { name: "عبد الرحمن عبد السبحان", goals: 1, teamLogo: "ثالث 1.png" },
+            { name: "نواف هايد", goals: 2, teamLogo: "ثالث 1.png" },
+            { name: "محمد خالد", goals: 4, teamLogo: "ثاني 3.png" },
+            { name: "عمر محمود", goals: 1, teamLogo: "اولى 4.png" },
+            { name: "أمجد عصام", goals: 1, teamLogo: "ثالث 2.png" },
+            { name: "محمد زياد", goals: 2, teamLogo: "ثالث 1.png" },
+            { name: "محمد خالد", goals: 1, teamLogo: "اولى 4.png" },
         ];
 
         // ترتيب اللاعبين حسب الأهداف (تنازلي)
